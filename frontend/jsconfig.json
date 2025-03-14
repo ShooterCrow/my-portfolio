@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "skipLibCheck": true,
+        "baseUrl": ".", // ✅ Required for "paths" to work
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "~app/*": [
+                "src/app/*"
+            ],
+            "~assets/*": [
+                "src/assets/*"
+            ],
+            "~components/*": [
+                "src/components/*"
+            ],
+            "~features/*": [
+                "src/features/*"
+            ],
+            "~/*": [
+                "src/*"
+            ]
+        }
+    }
+}

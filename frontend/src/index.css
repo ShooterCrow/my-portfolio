@@ -1,0 +1,466 @@
+/*// Root Variables //*/
+:root {
+  --background-color: #050707;
+  --primary-color: #ff4b20;
+}
+
+/*// Global Reset //*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*// Font Definitions //*/
+@font-face {
+  font-family: "Anton";
+  src: url(./assets/fonts/Anton-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Azeret Mono";
+  src: url(./assets/fonts/AzeretMono-VariableFont_wght.ttf);
+}
+
+/*// UTILITIES //*/
+/*// Parallax Background //*/
+.parallax {
+  background-image: url('/me.jpeg'); /*// Adjust path //*/
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /*// Enables parallax //*/
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/*// Bubble Text Effect //*/
+.hoverText {
+  transition:
+    font-weight 0.35s,
+    color 0.35s;
+}
+
+/* Main hover effect */
+.hoverText:hover {
+  font-weight: 900;
+  color: rgb(238, 242, 255);
+}
+
+/* Adjacent elements reacting to hover (right side) */
+.hoverText:hover + .hoverText {
+  font-weight: 500;
+  color: rgb(199, 210, 254);
+}
+
+.hoverText:hover + .hoverText + .hoverText {
+  font-weight: 300;
+}
+
+/* Adjacent elements reacting to hover (left side) */
+.hoverText:has(+ .hoverText:hover) {
+  font-weight: 500;
+  color: rgb(199, 210, 254);
+}
+
+.hoverText:has(+ .hoverText + .hoverText:hover) {
+  font-weight: 300;
+}
+
+
+/*// UTILITIES //*/
+
+/*// Typography //*/
+h1, h2, h3, body {
+  font-family: "Anton";
+}
+
+h4, h5, h6 {
+  font-family: "Azeret Mono";
+}
+
+p {
+  font-family: "Poppins";
+}
+
+/*// Banner Header //*/
+.banner-header {
+  font-family: "Anton";
+  font-size: clamp(40px, 8vw, 164px);
+}
+
+@media (min-width: 640px) {
+  .banner-header {
+    font-size: clamp(50px, 9vw, 164px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-header {
+    font-size: clamp(70px, 7vw, 164px);
+  }
+}
+
+/*// Primary Text //*/
+.pri-text {
+  font-family: "Anton";
+  font-size: clamp(40px, 8vw, 90px);
+}
+
+@media (min-width: 640px) {
+  .pri-text {
+    font-size: clamp(50px, 9vw, 90px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pri-text {
+    font-size: clamp(70px, 7vw, 90px);
+  }
+}
+
+/*// Secondary Text //*/
+.sec-text {
+  font-family: "Azeret Mono";
+}
+
+/*// Banner Head Text //*/
+.banner-head-text {
+  line-height: 160px;
+  color: var(--primary-color);
+}
+
+/*// Background Color //*/
+.bg-color {
+  background-color: var(--background-color);
+}
+
+/*// Primary Color //*/
+.primary-color {
+  color: var(--primary-color);
+}
+
+/*// Navigation //*/
+nav {
+  padding: 15px 80px;
+}
+
+/*// Hamburger Menu //*/
+.hamburger-bar {
+  width: 35px;
+  height: 1.5px;
+  background-color: aliceblue;
+  transition: all 600ms ease;
+}
+
+.menu-icon.open .bar-1 {
+  transform: translate3d(0px, 4px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-45deg) skew(0deg, 0deg); 
+  transform-style: preserve-3d;
+}
+
+.menu-icon.open .bar-2 {
+  display: none;
+}
+
+.menu-icon.open .bar-3 {
+  transform: translate3d(0px, -5px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(45deg) skew(0deg, 0deg); 
+  transform-style: preserve-3d;
+}
+
+/*// Buttons Styles //*/
+.button1-container {
+  display: flex;
+  font-family: "Anton";
+  justify-content: center;
+  width: 100%;
+}
+
+.button1-style {
+  width: 100%;
+  max-width: 20rem;
+  padding: 8px 40px;
+  background-color: #6e3322;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.button1-style::before {
+  left: 0px;
+  border-right: none;
+}
+
+.button1-style::after {
+  right: 0px;
+  border-left: none;
+}
+
+.button1-text {
+  color: #ff4b20;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.button1-style:hover .button1-text {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.button1-style .button1-text::before {
+  content: attr(data-hover);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff4b20;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.button1-style:hover .button1-text::before {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/*// Button 2 //*/
+.button2-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button2-style {
+  width: 100%;
+  max-width: 20rem;
+  padding: 8px 30px;
+  background-color: var(--primary-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.button2-text {
+  color: white;
+  font-family: "Azeret Mono";
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.left-border,
+.right-border {
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  top: 0px;
+  transition: 0.3s;
+  border: 2px solid #ff4b20;
+  z-index: 2;
+}
+
+.left-border {
+  left: 0px;
+  border-right: none;
+}
+
+.right-border {
+  right: 0px;
+  border-left: none;
+}
+
+.content-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container:before {
+  content: attr(data-hover);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff4b20;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.content-container:hover:before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*// Card Styles //*/
+.article-card {
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+  border: 1px solid gray;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.article-card:hover::before,
+.article-card:hover::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: orange;
+  border-style: solid;
+  transition: 0.3s ease-in-out;
+}
+
+.article-card:hover::before {
+  border-width: 2px 0 0 2px; /*// Top-left //*/
+  top: 0;
+  left: 0;
+}
+
+.article-card:hover::after {
+  border-width: 0 2px 2px 0; /*// Bottom-right //*/
+  bottom: 0;
+  right: 0;
+}
+
+.corner-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid orange;
+  border-left: none;
+  border-bottom: none;
+  opacity: 0;
+  transform: translate(5px, -5px);
+  transition: 0.3s ease-in-out;
+}
+
+.article-card:hover .corner-top-right {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.corner-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid orange;
+  border-right: none;
+  border-top: none;
+  opacity: 0;
+  transform: translate(-5px, 5px);
+  transition: 0.3s ease-in-out;
+}
+
+.article-card:hover .corner-bottom-left {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+.article-card:hover .bg-image {
+  opacity: 0.2;
+}
+
+.article-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.article-card:hover .article-title {
+  transform: translateY(-5px);
+}
+
+/*// Contact Form //*/
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Azeret Mono', monospace;
+}
+
+.contact-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+}
+
+.contact-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 0.8rem 0;
+  color: white;
+  font-size: 1rem;
+  font-family: 'Azeret Mono', monospace;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-input:focus {
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.textarea {
+  resize: none;
+  min-height: 100px;
+}

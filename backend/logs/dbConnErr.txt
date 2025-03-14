@@ -1,0 +1,12 @@
+04/03/2025 17:12	56d27a5b-9c7c-4fb7-a32e-ee271bd416c6	MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 31366ms (connectTimeoutMS: 30000)
+05/03/2025 05:04	4d87c760-1bc7-48c1-b4ec-f15ff3b9450b	Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.usxgg.mongodb.net
+05/03/2025 05:05	db16be67-7e98-4d12-ad68-41f14c59f12b	Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.usxgg.mongodb.net
+05/03/2025 12:41	c075fff3-5fdd-460b-8f5d-51aa3f092f7d	Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.usxgg.mongodb.net
+10/03/2025 06:50	f767b3de-e243-4c46-8ffd-0b7db44ac180	Internal server error
+11/03/2025 06:39	f8168a0b-9e01-4318-93ac-3a516ef5cc83	Internal server error
+11/03/2025 06:39	64c11777-9c08-42c5-8ae4-38a953660eca	Internal server error
+11/03/2025 14:35	2d363efa-68a6-46c6-b43f-5dd553ff6d5e	Internal server error
+12/03/2025 08:39	00a10f4c-a61c-48cb-8c80-18b74ab6e436	Internal server error
+12/03/2025 08:39	996fe083-aa3e-4116-bfb3-1a3247a86ba0	Internal server error
+12/03/2025 08:40	0352c0c3-fcb7-462d-9b5c-035066e21712	Internal server error
+12/03/2025 09:44	fa3ab4b0-545a-4d0a-936b-9650d0c3d9b5	Internal server error

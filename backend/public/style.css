@@ -1,0 +1,11 @@
+body {
+    background-color: black;
+    color: aliceblue;
+    font-family: "Neon Extra";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    word-spacing: 10px;
+    letter-spacing: 3px;
+}

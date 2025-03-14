@@ -1,0 +1,17 @@
+12/03/2025 19:48	4d03adcd-55f9-4a18-9667-13ab5edcb1d2	DELETE	user is not defined
+12/03/2025 19:50	ddbc8a60-1cf3-4d52-8678-e81ebbe78611	DELETE	user is not defined
+12/03/2025 20:00	cc7f113c-ef05-4db4-b343-0f5e976cb0f6	DELETE	user is not defined
+13/03/2025 11:57	27570ecb-4472-429c-9851-3c9839c82d38	GET	read ECONNRESET
+13/03/2025 14:42	72369464-2dbe-4543-bc38-ed03d7358379	POST	Cannot read properties of null (reading 'password')
+13/03/2025 16:39	50e847bb-1509-49bb-b83a-d18069d6d557	POST	Cannot read properties of null (reading 'password')
+13/03/2025 16:39	4fefaf5f-73b7-4030-8277-7e6c2c85962d	POST	Cannot read properties of null (reading 'password')
+13/03/2025 19:44	52a46ba6-298f-47ac-8274-eb24a48b8f94	GET	getaddrinfo ENOTFOUND cluster0-shard-00-00.usxgg.mongodb.net
+13/03/2025 23:19	c0f5d0d6-19cf-4a84-a7f7-b5ad848968d5	GET	read ECONNRESET
+13/03/2025 23:19	8744603b-7183-415a-b649-6ccf7e0b1a8c	GET	read ECONNRESET
+13/03/2025 23:20	c13df860-329b-46d8-90c8-e06db4c26049	GET	getaddrinfo ENOTFOUND cluster0-shard-00-02.usxgg.mongodb.net
+13/03/2025 23:21	ff73e8ef-48ab-4e70-8d8f-e61296f6067c	GET	getaddrinfo ENOTFOUND cluster0-shard-00-02.usxgg.mongodb.net
+13/03/2025 23:22	01305745-dcc2-406a-b573-0b7cccd5bef8	GET	getaddrinfo ENOTFOUND cluster0-shard-00-02.usxgg.mongodb.net
+14/03/2025 09:28	155d2222-d133-4b08-9c08-feff292b8247	TypeError: Cannot read properties of null (reading 'password')	POST	/auth	::1
+14/03/2025 12:01	221dec60-11ca-4d81-817b-64b19ef57898	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.usxgg.mongodb.net	GET	/refresh	::1
+14/03/2025 15:40	d2c8222c-7c57-484e-a28c-753e1cee8d39	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.usxgg.mongodb.net	GET	/refresh	::1
+14/03/2025 23:50	b7cdff73-8770-48d0-bfaf-204787cdd287	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.usxgg.mongodb.net	GET	/refresh	::1
