@@ -1,7 +1,6 @@
-import { Box, Flex, Image, Text, Link as ChakraLink } from '@chakra-ui/react'
+import { Flex, Image, Text, Link as ChakraLink } from '@chakra-ui/react'
 import React from 'react'
 import WaterDropGrid from '../otherComps/WaterDropGrid'
-import SocialsNewsletter from './SocialsNewsletter'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -20,7 +19,7 @@ const Footer = () => {
                                 <Image src="/logo.png" alt="Logo" boxSize="100px" />
                             </Link>
                             <Flex alignItems={"flex-end"} w={"70%"}>
-                                <SocialsNewsletter />
+    
                             </Flex>
                         </Flex>
                         <Flex gap={20} flexDir={"column"} w={"40%"}>
@@ -81,7 +80,6 @@ const Footer = () => {
                                 +1 9473654177 <br />
                             </Text>
                         </Flex>
-                        <SocialsNewsletter />
                     </Flex>
                 </Flex>
             </WaterDropGrid>

@@ -72,8 +72,8 @@ const Header = () => {
                             <img src="/logo.png" width={"70px"} alt="Logo" />
                         </Link>
                     </div>
-                    <HStack>
-                        <Flex display={{ base: "none", lg: "flex" }}>
+                    <HStack >
+                        <Flex gap={"10px"} display={{ base: "none", lg: "flex" }}>
                             <ChakraLink _hover={{ textDecoration: "none" }} as="a" href="/#contact">
                                 <Button1 text={"Contact Me"} />
                             </ChakraLink>

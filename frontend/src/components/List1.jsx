@@ -16,8 +16,11 @@ const AwardItem = React.memo(({ award, index, isHovered, onMouseEnter, onMouseLe
     <Flex
       key={`award-${index}`}
       align="center"
-      justify="space-between"
+      justify="space-around"
+      flexDir={{base: "column", lg: "row"}}
+      alignItems={"flex-start"}
       p={8}
+      w={"100%"}
       borderRadius="md"
       position="relative"
       cursor="pointer"
@@ -28,14 +31,16 @@ const AwardItem = React.memo(({ award, index, isHovered, onMouseEnter, onMouseLe
       bg={isHovered ? "gray.900" : "transparent"}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}  >
-      <Text w={"33%"} 
-        className="sec-text" 
-        fontWeight="bold" 
-        color={isHovered ? "red.400" : "white"}>
-        {award.title}
-      </Text>
-      <Text textAlign={"end"} w={"33%"} className="sec-text" fontSize="sm">{award.org}</Text>
-      <Text textAlign={"end"} w={"33%"} className="sec-text" fontSize="sm" opacity={0.6}>[ {award.year} ]</Text>
+      <Flex w={"70%"} justifyContent={"space-between"}>
+        <Text 
+          className="sec-text"
+          fontWeight="bold"
+          color={isHovered ? "red.400" : "white"}>
+          {award.title}
+        </Text>
+        <Text textAlign={"end"} className="sec-text" fontSize="sm">{award.org}</Text>
+      </Flex>
+      <Text w={{base: "fit-content", lg: "100px"}} textAlign={"start"} className="sec-text" fontSize="sm" opacity={0.6}>[ {award.year} ]</Text>
 
       {isHovered && (
         <>

@@ -15,6 +15,9 @@ import About from './components/About'
 import PersistLogin from './features/auth/PersistLogin'
 import ServicesList from './features/services/ServicesList'
 import ServiceDetail from './features/services/ServicesDetail'
+import ScrollToTop from './components/otherComps/ScrollToTop'
+import ContactPage from './features/contact/ContactPage'
+import AddNewProject from './features/projects/AddNewProject'
 
 const MenuContext = createContext()
 
@@ -22,11 +25,13 @@ const App = () => {
 
   return (
     <>
+      <ScrollToTop />
       <MenuProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
             <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<ContactPage />} />
             <Route path='/login' element={<Login />} />
             <Route path='/services' element={<ServicesList />} />
             <Route path='/services/:serviceId' element={<ServiceDetail />} />
@@ -40,6 +45,7 @@ const App = () => {
                 <Route element={<Prefetch />}>
                   <Route path='dashboard' element={<Dashboard />} />
                   <Route path='editproject/:id' element={<EditProject />} />
+                  <Route path='addproject' element={<AddNewProject />} />
                 </Route>
               </Route>
             </Route>

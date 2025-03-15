@@ -52,6 +52,10 @@ const updateProject = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: "Project Not Found" });
   }
 
+  const isChanged = Object.keys(req.body).some( (key) => req.body[key]?.toString() !== project[key]?.toString() );
+
+  if (!isChanged) return res.status(400).json({ message: "No changes detected" });
+
   if (title) project.title = title;
   if (description) project.description = description;
   if (technologies) project.technologies = technologies;
@@ -70,13 +74,12 @@ const updateProject = asyncHandler(async (req, res) => {
 const deleteProject = asyncHandler(async (req, res) => {
   const { id } = req.body;
   if (!id) return res.sendStatus(400);
-  const project = await Project.findById(id)
+  const project = await Project.findById(id);
   if (!project) return res.status(404).json({ message: "Project Not Found" });
   const result = await project.deleteOne();
-  if (result) return res.json({l: 99})
+  if (result) return res.json({ l: 99 });
   return res.json({ message: `${project.title} has been deleted` });
 });
-
 
 module.exports = {
   createProject,

@@ -11,6 +11,7 @@ export const ServiceCard = ({ serviceId }) => {
             service: data?.entities[serviceId]
         }),
     })
+    console.log(service.image)
 
     const bgColor = useColorModeValue('white.50', 'whiteAlpha.100')
     const hoverBgColor = useColorModeValue('white.50', 'whiteAlpha.200')

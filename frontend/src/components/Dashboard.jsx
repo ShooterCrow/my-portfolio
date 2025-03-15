@@ -80,7 +80,7 @@ const Dashboard = () => {
               <Link to="/users/new">
                 <MenuItem icon={<EditIcon />}>Add New User</MenuItem>
               </Link>
-              <Link to="/projects/new">
+              <Link to="addproject">
                 <MenuItem icon={<EditIcon />}>Add New Project</MenuItem>
               </Link>
               <Link to={`/users/${currentUser?.id}/edit`}>
@@ -93,7 +93,7 @@ const Dashboard = () => {
             <Link to="/users/new">
               <Button2 text="Add New User" func={() => { }} />
             </Link>
-            <Link to="/projects/new">
+            <Link to="/addproject">
               <Button2 text="Add New Project" func={() => { }} />
             </Link>
             <Link to={`/users/${currentUser?.id}/edit`}>

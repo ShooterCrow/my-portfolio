@@ -1,10 +1,12 @@
 import { Box, Flex, Text, Button, Divider, List, ListItem, ListIcon, Heading } from '@chakra-ui/react'
 import React from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import ParallaxImage from '@/components/otherComps/ParallaxImage'
 import { CheckCircleIcon } from 'lucide-react'
 import Loader from '@/components/otherComps/Loader'
 import { useGetServicesQuery } from './ServicesApiSlice'
+import Button2 from '@/components/buttons/Button2'
+import Button1 from '@/components/buttons/Button1'
 
 const ServiceDetail = () => {
   const { serviceId } = useParams()
@@ -12,8 +14,8 @@ const ServiceDetail = () => {
   const { service, isLoading, isError, isSuccess } = useGetServicesQuery("servicesList", {
     selectFromResult: ({ data, isLoading, isError, isSuccess }) => ({
       service: data?.entities[serviceId],
-      isLoading, 
-      isError, 
+      isLoading,
+      isError,
       isSuccess
     }),
   })
@@ -81,9 +83,9 @@ const ServiceDetail = () => {
 
             {/* CTA section */}
             <Box textAlign="center" my={10}>
-              <Button size="lg" colorScheme="blue" onClick={() => navigate('/contact')}>
+              <Button2 link='/contact' text={"Get a Quote"}>
                 Get a Quote
-              </Button>
+              </Button2>
             </Box>
           </Flex>
 
@@ -92,16 +94,10 @@ const ServiceDetail = () => {
           {/* Related services if available */}
           {service.relatedServices?.length > 0 && (
             <Box mb={8}>
-              <Text className="pri-text" fontSize="xl" mb={4}>Related Services</Text>
+              <Text className="sec-text" fontSize="xl" mb={4}>[ Related Services ]</Text>
               <Flex gap={4} flexWrap="wrap">
                 {service.relatedServices.map(relatedId => (
-                  <Button
-                    key={relatedId}
-                    variant="outline"
-                    onClick={() => navigate(`/services/${relatedId}`)} >
-                    {/* Ideally you would look up the title here */}
-                    View Related Service
-                  </Button>
+                  <Button1 key={relatedId} text={"View Related Service"} link={`/services/${relatedId}`} />
                 ))}
               </Flex>
             </Box>
@@ -109,9 +105,9 @@ const ServiceDetail = () => {
 
           {/* Back button */}
           <Flex justifyContent="center" mb={8}>
-            <Button colorScheme="blue" variant="ghost" onClick={() => navigate('/services')}>
-              Back to Services
-            </Button>
+            <Link to={'/services'}>
+              <Text className='sec-text'>Back to Services</Text>
+            </Link>
           </Flex>
         </Box>
       </Box>
