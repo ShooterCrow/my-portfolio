@@ -23,3 +23,7 @@
 15/03/2025 02:08	d8c873b4-2c20-4081-8124-a960ac0c05c9	Error: Not Allowed by cors	GET	/projects	::1
 15/03/2025 02:09	5971fe23-68d1-4cfe-a1b5-c673b27c584f	Error: Not Allowed by cors	OPTIONS	/projects	::1
 15/03/2025 02:09	ad7eba25-7f48-4a6a-88e4-82cbb5ba582f	Error: Not Allowed by cors	GET	/projects	::1
+15/03/2025 08:24	d12ff25b-049d-442e-9a5e-70400357fab0	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.usxgg.mongodb.net	GET	/users	::1
+15/03/2025 08:24	a2095009-f505-473e-8437-2e28490740f8	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.usxgg.mongodb.net	GET	/projects	::1
+15/03/2025 08:24	0c3a8249-e9d9-4be6-b827-4894c933956f	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.usxgg.mongodb.net	GET	/contact	::1
+15/03/2025 08:24	7f8c1a56-5a3d-4d7b-bcd0-5cd7387a7817	MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.usxgg.mongodb.net	GET	/services	::1

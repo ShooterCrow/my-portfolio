@@ -1,3 +1,14 @@
 15/03/2025 02:57	d9a79300-3859-453c-9af5-f4e99da82334	OPTIONS	/projects	https://my-portfolio-xsh6.onrender.com	::1
 15/03/2025 02:57	9b41bc0f-e6d0-46da-b2d3-f06563625456	GET	/projects	https://my-portfolio-xsh6.onrender.com	::1
 15/03/2025 02:57	8082e987-701c-4025-a028-c13d582ed407	GET	/projects	https://my-portfolio-xsh6.onrender.com	::1
+15/03/2025 08:23	722734c3-2a47-45b6-8888-10669b4643e4	OPTIONS	/users	http://localhost:5173	::1
+15/03/2025 08:23	8a672402-0372-4ed5-bee0-5f540a2a833b	OPTIONS	/users	http://localhost:5173	::1
+15/03/2025 08:23	f03db85c-0277-46d6-8453-806441e70d00	OPTIONS	/projects	http://localhost:5173	::1
+15/03/2025 08:23	c6af498a-4fd0-4983-9acf-00e8bafc8495	OPTIONS	/projects	http://localhost:5173	::1
+15/03/2025 08:23	4a6c3a53-244c-4342-8681-4f778d047546	OPTIONS	/contact	http://localhost:5173	::1
+15/03/2025 08:23	910a90c9-10ea-4e6e-aa7c-250331f276e8	OPTIONS	/services	http://localhost:5173	::1
+15/03/2025 08:23	4c772c19-5be0-442b-9a48-d99673da562e	OPTIONS	/contact	http://localhost:5173	::1
+15/03/2025 08:23	ed10da78-3197-40ba-a9f2-b0c181727fdf	GET	/users	http://localhost:5173	::1
+15/03/2025 08:23	3e5bf02b-b356-4707-8b7e-b09d9d893fe4	GET	/projects	http://localhost:5173	::1
+15/03/2025 08:23	ab709a87-c3a2-45d4-95d6-69ae60475064	GET	/contact	http://localhost:5173	::1
+15/03/2025 08:23	65934e84-6229-492e-9d0e-9d9eaca4968b	GET	/services	http://localhost:5173	::1
