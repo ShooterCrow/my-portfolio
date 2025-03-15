@@ -12,3 +12,5 @@
 15/03/2025 08:23	3e5bf02b-b356-4707-8b7e-b09d9d893fe4	GET	/projects	http://localhost:5173	::1
 15/03/2025 08:23	ab709a87-c3a2-45d4-95d6-69ae60475064	GET	/contact	http://localhost:5173	::1
 15/03/2025 08:23	65934e84-6229-492e-9d0e-9d9eaca4968b	GET	/services	http://localhost:5173	::1
+15/03/2025 08:30	78008620-ce78-40ab-82ba-d07fcfc1a83d	OPTIONS	/projects	https://my-portfolio-bfhc.onrender.com	::1
+15/03/2025 08:30	267019b7-b045-43c6-bd50-497bf4afc08c	GET	/projects	https://my-portfolio-bfhc.onrender.com	::1
