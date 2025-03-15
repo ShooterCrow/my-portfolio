@@ -8,7 +8,7 @@ const Layout = () => {
   return (
     <Container m={0} px={0} maxW={"100%"}>
       <Header />
-      <VStack mt align={"stretch"} maxW={"full"} m={0} px={"0"}>
+      <VStack align={"stretch"} maxW={"full"} m={0} px={"0"}>
         <Outlet />
       </VStack>
       <Footer />

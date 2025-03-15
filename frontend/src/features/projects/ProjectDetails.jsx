@@ -33,7 +33,7 @@ const ProjectDetails = () => {
     const formattedDate = format(new Date(project.createdAt), "dd.MM.yyyy")
 
     content = (
-      <Box mt={"100px"} maxW="1200px" mx="auto">
+      <Box mt={"100px"} ml={"auto"} mr={"auto"} w="100%">
         <Box mx={"20px"} mb={8}>
           <Text className='pri-text' mb={4}>{project.title}</Text>
           <Flex justifyContent="space-between" alignItems="end" mb={6}>
