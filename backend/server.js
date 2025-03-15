@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(path.join(__dirname, "public")))
 
 // app.use("/", require("./routes/userRoutes"));
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.status(200)
     if (req.accepts("html")) {
         res.sendFile(path.join(__dirname, "views", "index.html"))

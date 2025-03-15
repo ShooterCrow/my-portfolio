@@ -1,0 +1,16 @@
+15/03/2025 21:46	21207897-5b1f-4cd5-ac34-d061aa13e2ad	GET	/services	http://localhost:5173	::1
+15/03/2025 21:47	41c4c004-eac8-4f8c-a0c0-50c182ad0be7	GET	/services	http://localhost:5173	::1
+15/03/2025 21:47	c6392085-305f-45b5-b6a9-d456e0cb7b40	GET	/services	undefined	::1
+15/03/2025 21:47	fac1a3a3-6b5e-47f0-8ce2-90337a63fd7e	GET	/style.css	undefined	::1
+15/03/2025 21:47	e222f1f9-12ea-49d4-b254-ea2a69329470	GET	/favicon.ico	undefined	::1
+15/03/2025 21:48	de25e502-994b-4f67-90ca-aed76d33b2c2	GET	/services	undefined	::1
+15/03/2025 21:48	b74aa275-f3c8-487e-8a92-9b395dbef83c	GET	/favicon.ico	undefined	::1
+15/03/2025 21:49	2798d7ed-b286-4270-8bc0-20580fa1489a	GET	/services	undefined	::1
+15/03/2025 21:49	7619c719-fbdd-42c5-8649-e35ff49f11c3	GET	/favicon.ico	undefined	::1
+15/03/2025 21:49	66f8c1a1-38fa-4e0a-a582-a827954940bb	GET	/services	undefined	::1
+15/03/2025 21:49	c8e29c98-6ecb-42c3-a743-6000e1c1a40b	GET	/favicon.ico	undefined	::1
+15/03/2025 21:49	896c5ee2-6bdc-41c9-97e5-9cf239ce371c	GET	/	undefined	::1
+15/03/2025 21:49	a430efcf-0bdd-4e8c-b5fa-2e27d524ae2f	GET	/style.css	undefined	::1
+15/03/2025 21:49	cf685957-9827-463a-a122-7685c67487de	GET	/favicon.ico	undefined	::1
+15/03/2025 21:49	ded1d39d-4c83-49f3-8e2a-3071ac586380	GET	/projects	undefined	::1
+15/03/2025 21:49	a62d098f-49b6-4a55-be04-950df9cf45e2	GET	/favicon.ico	undefined	::1
