@@ -49,3 +49,8 @@
 15/03/2025 09:21	ed0ff9c0-697a-456c-86fc-e85229d43d57	OPTIONS	/projects	https://my-portfolio-bfhc.onrender.com	::1
 15/03/2025 09:21	80f810eb-df5b-43e9-9f4f-9bf04822b874	GET	/projects	https://my-portfolio-bfhc.onrender.com	::1
 15/03/2025 09:21	4ebaea22-ffda-4622-9d8e-cd76c9df6e69	GET	/projects	https://my-portfolio-bfhc.onrender.com	::1
+15/03/2025 09:34	d1bc1cf6-ef3e-435a-9596-6cf25a358609	GET	/	undefined	::1
+15/03/2025 09:34	2a6a43b3-e4d7-407f-85e7-aa550248f452	GET	/style.css	undefined	::1
+15/03/2025 09:34	150fa65d-4151-48e5-89d9-7aecf5b7be82	GET	/favicon.ico	undefined	::1
+15/03/2025 09:34	25a926d8-48ef-4521-a398-b2c241c44373	OPTIONS	/projects	https://my-portfolio-bfhc.onrender.com	::1
+15/03/2025 09:34	41678028-ae69-4746-b6ec-61bde3e625a3	GET	/projects	https://my-portfolio-bfhc.onrender.com	::1
