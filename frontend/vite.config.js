@@ -7,7 +7,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"), // ✅ Ensure @ points to src
-      '.': path.resolve(__dirname, './'), 
     },
   },
 });
