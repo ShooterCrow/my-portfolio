@@ -120,7 +120,7 @@ const Index = () => {
             <Box position="relative" w="100%" h="100%">
               {/* Image */}
               <Image
-                src="/me.png"
+                src="/me.webp"
                 alt="Profile"
                 w="100%"
                 h="100%"
@@ -190,7 +190,7 @@ const Index = () => {
           <Text className="sec-text" fontSize={"12px"} px={"10px"} textAlign={"end"}>
             Talks about himself in third person sometimes ):
           </Text>
-          <Text className="sec-text" w={{ base: "80%", md: "50%" }} mt={"40px"} textAlign={"center"}>
+          <Text className="sec-text" w={{ base: "80%", md: "50%" }} my={"40px"} textAlign={"center"}>
             Driven by a passion for creating intuitive and engaging digital experiences, he combines clean code with innovative design to develop fast, responsive, and user-friendly websites. With a strong focus on performance and functionality, he builds scalable web solutions that not only look great but also deliver seamless interactions and lasting impact
           </Text>
           <Button1 link="#contact" useChakraLink={true} text={"Contact Me"} />

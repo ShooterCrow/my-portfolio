@@ -13,7 +13,6 @@ import {
   HStack,
   useColorModeValue
 } from '@chakra-ui/react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaReact, FaNodeJs, FaDatabase, FaServer, FaCode, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiExpress, SiMongodb, SiJavascript } from 'react-icons/si';
 import ParallaxImage from './otherComps/ParallaxImage';
@@ -27,7 +26,7 @@ const About = () => {
     <Box>
       {/* Hero Section with Parallax */}
       <ParallaxImage 
-        imagePath="/me.jpeg" // Replace with your image path
+        imagePath="/me.jpeg"
         height="50vh"
         showOverlay={true}
         showContent={true}

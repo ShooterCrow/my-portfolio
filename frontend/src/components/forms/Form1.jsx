@@ -66,7 +66,7 @@ const Form1 = () => {
       <form className="contact-form">
         {/* Name Field */}
         <Input1
-          label={"[ NAME ]"}
+          label={"NAME"}
           type="text"
           required={true}
           value={name}
@@ -75,7 +75,7 @@ const Form1 = () => {
 
         {/* Email Field */}
         <Input1
-          label={"[ EMAIL ]"}
+          label={"EMAIL"}
           type="email"
           required={true}
           value={email}
@@ -85,7 +85,7 @@ const Form1 = () => {
         {/* Message Field */}
 
         <TextArea1
-          label={"[ MESSAGE ]"}
+          label={"MESSAGE"}
           type="text"
           required={true}
           value={msg}

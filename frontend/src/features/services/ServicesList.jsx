@@ -11,13 +11,9 @@ const ServicesList = () => {
         isSuccess,
         isError,
         error } = useGetServicesQuery("servicesList", {
-            refetchOnFocus: true,
+            refetchOnFocus: false,
             refetchOnMountOrArgChange: false
         })
-
-    console.log(services, isError, error, isLoading)
-
-
 
     let content
 

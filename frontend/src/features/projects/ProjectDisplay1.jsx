@@ -32,7 +32,7 @@ const ProjectDisplay1 = ({ title, img, tags, projectId }) => {
 
     // Memoize project title and technologies
     const projectTitle = useMemo(() =>
-        project?.title?.toUpperCase() || "TEST TITLE",
+        project?.title?.toUpperCase(),
         [project?.title]
     );
 
@@ -59,7 +59,7 @@ const ProjectDisplay1 = ({ title, img, tags, projectId }) => {
                         width="100%"
                         height="100%"
                         bg="rgba(0, 0, 0, 0.5)"
-                        backdropFilter="blur(10px)"
+                        backdropFilter="blur(3px)"
                         zIndex="1" />
 
                     {/* Background Image */}

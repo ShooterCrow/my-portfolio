@@ -15,7 +15,7 @@ function useScrollAnimations(refs) {
   const debouncedScrollHandler = useMemo(
     () =>
       debounce(() => {
-        console.log("Handling scroll optimally");
+        // console.log("Handling scroll optimally");
       }, 100),
     []
   );

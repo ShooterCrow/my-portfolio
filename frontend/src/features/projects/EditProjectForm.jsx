@@ -3,8 +3,10 @@ import { Flex, useToast } from "@chakra-ui/react";
 import { Input1, TextArea1 } from "@/components/forms/FormElements";
 import Button1 from "@/components/buttons/Button1";
 import { useUpdateProjectMutation } from "./projectsApiSlice";
+import { useNavigate } from "react-router-dom";
 
 const EditProjectForm = ({ project, isProjectSuccess }) => {
+  const navigate = useNavigate()
   // Use multiple useState hooks for each form field
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -37,6 +39,7 @@ const EditProjectForm = ({ project, isProjectSuccess }) => {
         duration: 5000,
         isClosable: true,
       });
+      navigate(-1)
     } else if (isUpdateError) {
       toast({
         title: "Error!",
@@ -63,13 +66,8 @@ const EditProjectForm = ({ project, isProjectSuccess }) => {
         demoLink,
         image,
       };
-      console.log(projectData)
-      try {
-        const result = await updateProject(projectData);
-        console.log(result);
-      } catch (err) {
-        console.log(err);
-      }
+      await updateProject(projectData);
+      
     },
     [title, description, technologies, githubLink, demoLink, image, project, updateProject]
   );

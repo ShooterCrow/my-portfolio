@@ -8,16 +8,19 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import ParallaxImage from '@/components/otherComps/ParallaxImage'
 import Button1 from '@/components/buttons/Button1'
 import Button2 from '@/components/buttons/Button2'
+import Loader from '@/components/otherComps/Loader'
+import { Link as RouterLink } from "react-router-dom"
 
 const ProjectDetails = () => {
   const { projectId } = useParams()
   const { isLoading, isSuccess, isError, error } = useGetProjectsQuery()
   const project = useSelector(state => selectProjectById(state, projectId))
 
+
   let content
 
   if (isLoading) {
-    content = <Text className='pri-text'>Loading...</Text>
+    content = <Loader />
   } else if (isError) {
     content = <Text className='pri-text'>Error: {error?.data?.message || 'Failed to load project'}</Text>
   } else if (isSuccess && project) {
@@ -58,10 +61,10 @@ const ProjectDetails = () => {
             </Box>
 
             <Flex gap={4} mt={4}>
-              <Link to>
-              <Button2 text={"Live Site"} />
+              <Link isExternal href={project.demoLink}>
+                <Button2 text={"Live Site"} />
               </Link>
-             
+
               {/* <Button
                 as={Link}
                 href={project.githubLink}
@@ -71,10 +74,10 @@ const ProjectDetails = () => {
               {/* </Button> */}
 
               {project.demoLink && (
-                 <Link isExternal href='www.google.com'>
-                 <Button1 text={"Github Repo"} />
-                 {/* <FaExternalLinkAlt /> */}
-                 </Link>
+                <Link isExternal href='www.google.com'>
+                  <Button1 text={"Github Repo"} />
+                  {/* <FaExternalLinkAlt /> */}
+                </Link>
                 // <Button
                 //   as={Link}
                 //   href={project.demoLink}
@@ -86,9 +89,7 @@ const ProjectDetails = () => {
           <Divider my={8} />
 
           <Flex justifyContent="center" mb={8}>
-            <Button colorScheme="blue" variant="ghost" onClick={() => window.history.back()}>
-              Back to Projects
-            </Button>
+            <RouterLink to={"/projects"}><Text className='sec-text'>Back to Projects</Text></RouterLink>
           </Flex>
         </Box>
       </Box>
