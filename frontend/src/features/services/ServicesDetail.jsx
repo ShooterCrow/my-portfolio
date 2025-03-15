@@ -1,10 +1,10 @@
 import { Box, Flex, Text, Button, Divider, List, ListItem, ListIcon, Heading } from '@chakra-ui/react'
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useGetServicesQuery } from './servicesApiSlice.js'
 import ParallaxImage from '@/components/otherComps/ParallaxImage'
 import { CheckCircleIcon } from 'lucide-react'
 import Loader from '@/components/otherComps/Loader'
+import { useGetServicesQuery } from './ServicesApiSlice'
 
 const ServiceDetail = () => {
   const { serviceId } = useParams()
