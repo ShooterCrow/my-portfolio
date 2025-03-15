@@ -24,6 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(path.join(__dirname, "public")))
 
 // app.use("/", require("./routes/userRoutes"));
+app.use("/", (req, res) => {
+    res.status(200)
+    if (req.accepts("html")) {
+        res.sendFile(path.join(__dirname, "views", "index.html"))
+    } else if (req.accepts("json")) {
+        res.json({message: "Victor Onyekwere"})
+    }
+});
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/refresh", require("./routes/refreshRoutes"));
 app.use("/users", require("./routes/userRoutes"));

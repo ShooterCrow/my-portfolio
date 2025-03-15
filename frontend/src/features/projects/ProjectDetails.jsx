@@ -62,26 +62,14 @@ const ProjectDetails = () => {
 
             <Flex gap={4} mt={4}>
               <Link isExternal href={project.demoLink}>
-                <Button2 text={"Live Site"} />
+                <Button2 isExternal={true}  text={"Live Site"} />
               </Link>
 
-              {/* <Button
-                as={Link}
-                href={project.githubLink}
-                isExternal
-                leftIcon={<FaGithub />}
-              > */}
-              {/* </Button> */}
-
               {project.demoLink && (
-                <Link isExternal href='www.google.com'>
-                  <Button1 text={"Github Repo"} />
-                  {/* <FaExternalLinkAlt /> */}
+                <Link isExternal href={project.githubLink}>
+                  <Button1 isExternal={true} text={"GitHub Repo"} />
                 </Link>
-                // <Button
-                //   as={Link}
-                //   href={project.demoLink}
-                //   isExternal
+                // <Button1 link='www.google.com' useChakraLink={true} isExternal={true} text={"Github Repo"} />
               )}
             </Flex>
           </Flex>
