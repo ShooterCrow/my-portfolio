@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '../src/index.css'
 import App from '../src/App'
-import store from "./app/store.js"
+import store from "../src/app/store.js"
 import { Provider } from 'react-redux'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Provider as UiProvider } from '@/components/ui/';
