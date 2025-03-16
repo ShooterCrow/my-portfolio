@@ -103,7 +103,7 @@ const Index = () => {
       {/* Banner Section */}
       <section>
         <Flex
-          pt={"100px"}
+          pt={""}
           pb={{ base: "50px", lg: "100px" }}
           minH={{ base: "fit-content", xl: "100vh" }}
           position="relative">

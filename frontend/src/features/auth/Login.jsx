@@ -57,12 +57,12 @@ const Login = () => {
 
 
     return (
-        <Flex px={"30px"} flexDir={"column"} py={{ base: "50px", lg: "100px" }} justifyContent={"center"} alignItems={"center"} minH={"120vh"}>
+        <Flex px={"30px"} flexDir={"column"} pb={{ base: "50px", lg: "100px" }} justifyContent={"center"} alignItems={"center"} minH={"90vh"}>
             <Text className='pri-text'>Login</Text>
             <form className="contact-form">
                 {/* Name Field */}
                 <Input1
-                    label={"[ USERNAME ]"}
+                    label={"USERNAME"}
                     type="text"
                     required={true}
                     value={username}
@@ -71,7 +71,7 @@ const Login = () => {
 
                 {/* Email Field */}
                 <Input1
-                    label={"[ PASSWORD ]"}
+                    label={"PASSWORD"}
                     type="password"
                     required={true}
                     value={password}

@@ -28,7 +28,7 @@ const ServiceDetail = () => {
     content = <Text className='pri-text'>Error: {error?.data?.message || 'Failed to load service'}</Text>
   } else if (isSuccess && service) {
     content = (
-      <Box mt={{ base: "80px", lg: "120px" }} maxW="1200px" mx="auto">
+      <Box maxW="1200px" mx="auto">
         {/* Title Section */}
         <Box mb={6} textAlign="center">
           <Text as="h1" className="pri-text" mb={4}>
@@ -78,6 +78,7 @@ const ServiceDetail = () => {
               <Box mb={8}>
                 <Text className="pri-text" fontSize="xl" mb={4}>Pricing</Text>
                 <Text className="sec-text">{service.pricing}</Text>
+                {alert(service.pricing)}
               </Box>
             )}
 

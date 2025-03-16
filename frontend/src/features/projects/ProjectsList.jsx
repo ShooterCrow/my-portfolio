@@ -51,7 +51,7 @@ const ProjectsList = () => {
   }
 
   return (
-    <Box mt={"100px"}>
+    <Box>
       {content}
     </Box>
   );

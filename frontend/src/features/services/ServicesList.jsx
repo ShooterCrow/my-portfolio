@@ -28,7 +28,7 @@ const ServicesList = () => {
         if (ids?.length) {
 
             content = (
-                <Box mt={"100px"}>
+                <Box>
                     <Box mb={10} textAlign="center">
                         <Text className="pri-text" mb={4}>
                             Our Services

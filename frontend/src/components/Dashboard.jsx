@@ -54,7 +54,7 @@ const Dashboard = () => {
   ]
 
   return (
-    <Box mt={{ base: "100px", md: "120px" }} mx="auto" maxW="1200px" px={{ base: 3, md: 4 }} mb={10}>
+    <Box mt={{ base: "20px", md: "50px" }} mx="auto" maxW="1200px" px={{ base: 3, md: 4 }} mb={10}>
       <Flex
         justifyContent="space-between"
         alignItems="center"
