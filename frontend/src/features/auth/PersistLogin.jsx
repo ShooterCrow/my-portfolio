@@ -46,11 +46,13 @@ const PersistLogin = () => {
     }, [])
     let content
     if (!persist) { // persist: no
+        console.log('Persist no')
         content = <Outlet />
     } else if (isLoading) {
+        console.log('success')
         content = <Loader />
     } else if (isError) { //persist: yes, token: no
-        console.log("this")
+        console.log("token no")
         content = (
             <Flex h={"100vh"} justifyContent={"center"} alignItems={"center"}>
                 <Link to="/login"><Button2 text={"Please login again"} /></Link>
