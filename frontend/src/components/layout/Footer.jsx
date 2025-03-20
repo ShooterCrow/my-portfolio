@@ -42,8 +42,8 @@ const Footer = () => {
                                     <ChakraLink
                                         isExternal
                                         textDecoration="none"
-                                        _hover={{ color: "#ff4b20", textDecoration: "none" }} href="mailto:vj.onyekwere@gmail.com">
-                                        vj.onyekwere@gmail.com
+                                        _hover={{ color: "#ff4b20", textDecoration: "none" }} href="mailto:victor@webdevlab.site">
+                                        [ victor@webdevlab.site ]
                                     </ChakraLink>
                                     <br />
                                     <ChakraLink
@@ -76,7 +76,7 @@ const Footer = () => {
                                 CONTACT
                             </Text>
                             <Text lineHeight={"50px"} textAlign={"end"} className='sec-text'>
-                                vj.onyekwere@gmail.com <br />
+                                victor@webdevlab.site <br />
                                 +1 9473654177 <br />
                             </Text>
                         </Flex>

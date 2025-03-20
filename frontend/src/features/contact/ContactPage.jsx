@@ -8,7 +8,8 @@ import {
     VStack,
     HStack,
     Icon,
-    useColorModeValue
+    useColorModeValue,
+    Link
 } from '@chakra-ui/react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 import Form1 from '@/components/forms/Form1';
@@ -57,15 +58,19 @@ export const ContactSection = () => {
                 <Text className="pri-text">
                     CONTACT
                 </Text>
-                <Text textAlign={"center"} className="sec-text">
-                    [ vj.onyekwere@gmail.com ] <br />
-                    [ +1 9473654177 ]
-                </Text>
+                <Flex alignItems={"flex-start"} flexDir={"column"}>
+                    <Text fontSize={"14px"} className="sec-text">
+                        <Link href="mailto:victor@webdevlab.site">[ victor@webdevlab.site ]</Link>
+                    </Text>
+                    <Text fontSize={"14px"} className="sec-text">
+                        <Link href="tel:+17473654177">[ +1 (747) 365-4177 ]</Link>
+                    </Text>
+                </Flex>
             </VStack>
             <Flex h={"fit-content"} gap={"15px"} mt={"20px"} flexDir={{ base: "column", md: "row" }}>
                 <Button2 useChakraLink isExternal link={"https://linkedin.com/in/victor-j-o"} text={"LinkedIn"} />
-                <Button2 useChakraLink isExternal link={"https://instagram.com/javascriptjunkie1"}  text={"Instagram"} />
-                <Button2 useChakraLink isExternal link={"https://github.com/ShooterCrow"}  text={"Github"} />
+                <Button2 useChakraLink isExternal link={"https://instagram.com/javascriptjunkie1"} text={"Instagram"} />
+                <Button2 useChakraLink isExternal link={"https://github.com/ShooterCrow"} text={"Github"} />
             </Flex>
         </Flex>
     </Flex>)
