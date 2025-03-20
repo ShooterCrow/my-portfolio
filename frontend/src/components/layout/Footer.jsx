@@ -43,7 +43,7 @@ const Footer = () => {
                                         isExternal
                                         textDecoration="none"
                                         _hover={{ color: "#ff4b20", textDecoration: "none" }} href="mailto:victor@webdevlab.site">
-                                        [ victor@webdevlab.site ]
+                                        victor@webdevlab.site
                                     </ChakraLink>
                                     <br />
                                     <ChakraLink

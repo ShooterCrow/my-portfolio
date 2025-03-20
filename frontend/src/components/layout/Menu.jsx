@@ -5,7 +5,7 @@ import Button2 from '../buttons/Button2'
 
 const Menu = () => {
     return (
-        <VStack bg={"#1A1A1A"} position={"fixed"} zIndex={"9"} py={"20px"} px={"20px"} w={"fit-content"} h={"100vh"}>
+        <Flex flexDir={"column"} alignItems={"center"} justifyContent={"center"} bg={"#1A1A1A"} position={"fixed"} zIndex={"9"} py={"20px"} px={"20px"} w={"fit-content"} h={"100vh"}>
             <Flex flexDir={{ base: "column-reverse", lg: "row" }} justifyContent={"space-between"}>
                 <Flex gap={"10px"} alignItems={"stretch"} flexDir={{ base: "row", lg: "column" }}>
                     <Flex height="100%" justifyContent="space-between" flexDir={"column"}>
@@ -52,7 +52,7 @@ const Menu = () => {
                 </Flex>
             </Flex>
 
-        </VStack>
+        </Flex>
     )
 }
 
