@@ -3,19 +3,27 @@ import Button1 from "../buttons/Button1";
 import { useCreateContactMsgMutation } from "@/features/contact/contactApiSlice";
 import Loader from "../otherComps/Loader";
 import { Flex, Text, useToast } from "@chakra-ui/react";
-import { Input1, TextArea1 } from "./FormElements"
+import { Input1, Select1, TextArea1 } from "./FormElements"
 
 const Form1 = () => {
+  const [createContactMsg, { isLoading, isSuccess, isError, error }] = useCreateContactMsgMutation();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [errorDisplay, setErrorDisplay] = useState(null);
-
-  const [createContactMsg, { isLoading, isSuccess, isError, error }] = useCreateContactMsgMutation();
+  const [isSell, setIsSell] = useState('');
+  const [options, setOptions] = useState([
+    { value: 'Yes', label: 'Yes' },
+    { value: 'No', label: 'No' },
+  ]);
 
   const handleName = (e) => setName(e.target.value)
   const handleEmail = (e) => setEmail(e.target.value)
   const handleMsg = (e) => setMsg(e.target.value)
+  const handleSell = (e) => {
+    setIsSell(e.target.value);
+  };
 
   const toast = useToast()
   useEffect(() => {
@@ -81,6 +89,26 @@ const Form1 = () => {
           value={email}
           func={handleEmail}
           placeholder="Write your email" />
+
+        <Flex alignItems={"center"} gap={"10px"} w={"100%"} justifyContent={"space-between"}>
+          {/* Budget Field */}
+          <Input1
+            label={"BUDGET"}
+            type="number"
+            required={true}
+            // value={budget}
+            // func={handleBuget}
+            placeholder="Your Budget" />
+
+          {/* Ecommerce? Field */}
+          <Select1
+            label={"Recieving Payments?"}
+            required={true}
+            options={options}
+            value={isSell}
+            func={handleSell}
+          />
+        </Flex>
 
         {/* Message Field */}
 

@@ -65,7 +65,7 @@ export const ContactSection = () => {
             <Flex h={"fit-content"} gap={"15px"} mt={"20px"} flexDir={{ base: "column", md: "row" }}>
                 <Button2 useChakraLink isExternal link={"https://linkedin.com/in/victor-j-o"} text={"LinkedIn"} />
                 <Button2 useChakraLink isExternal link={"https://instagram.com/javascriptjunkie1"}  text={"Instagram"} />
-                <Button2 useChakraLink isExternal link={"https://www.youtube.com/@javascriptjunkie1"}  text={"Youtube"} />
+                <Button2 useChakraLink isExternal link={"https://github.com/ShooterCrow"}  text={"Github"} />
             </Flex>
         </Flex>
     </Flex>)

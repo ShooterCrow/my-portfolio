@@ -99,11 +99,13 @@ const Index = () => {
   }, [testimonials]);
 
   return (
-    <div>
+    <Box
+      mt={"-100px"}
+    >
       {/* Banner Section */}
       <section>
         <Flex
-          pt={""}
+          pt={"100px"}
           pb={{ base: "50px", lg: "100px" }}
           minH={{ base: "fit-content", xl: "100vh" }}
           position="relative">
@@ -275,7 +277,7 @@ const Index = () => {
       <section>
         <ContactSection />
       </section>
-    </div>
+    </Box>
   );
 };
 

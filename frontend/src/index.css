@@ -421,6 +421,11 @@ nav {
 }
 
 /*// Contact Form //*/
+.select {
+  background-color: #222; 
+  color: white;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -435,6 +440,7 @@ nav {
   font-size: 0.9rem;
   font-weight: bold;
   color: white;
+  text-transform: uppercase;
 }
 
 .contact-input {
