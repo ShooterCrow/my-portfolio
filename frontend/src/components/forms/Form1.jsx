@@ -11,8 +11,9 @@ const Form1 = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
+  const [budget, setBudget] = useState("");
   const [errorDisplay, setErrorDisplay] = useState(null);
-  const [isSell, setIsSell] = useState('');
+  const [payment, setPayment] = useState('');
   const [options, setOptions] = useState([
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' },
@@ -21,8 +22,9 @@ const Form1 = () => {
   const handleName = (e) => setName(e.target.value)
   const handleEmail = (e) => setEmail(e.target.value)
   const handleMsg = (e) => setMsg(e.target.value)
-  const handleSell = (e) => {
-    setIsSell(e.target.value);
+  const handleBuget = (e) => setBudget(e.target.value)
+  const handleIsPayment = (e) => {
+    setPayment(e.target.value);
   };
 
   const toast = useToast()
@@ -51,7 +53,7 @@ const Form1 = () => {
     setErrorDisplay(null);
 
     try {
-      await createContactMsg({ name, email, message: msg }).unwrap();
+      await createContactMsg({ name, email, payment, budget, message: msg }).unwrap();
       setName("");
       setEmail("");
       setMsg("");
@@ -96,8 +98,8 @@ const Form1 = () => {
             label={"BUDGET"}
             type="number"
             required={true}
-            // value={budget}
-            // func={handleBuget}
+            value={budget}
+            func={handleBuget}
             placeholder="Your Budget" />
 
           {/* Ecommerce? Field */}
@@ -105,8 +107,8 @@ const Form1 = () => {
             label={"Recieving Payments?"}
             required={true}
             options={options}
-            value={isSell}
-            func={handleSell}
+            value={payment}
+            func={handleIsPayment}
           />
         </Flex>
 

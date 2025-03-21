@@ -1,15 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useLoginMutation } from "./authApiSlice"
 import { useNavigate } from 'react-router-dom'
 import { setCredentials } from './authSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import Form1 from '../../components/forms/Form1'
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { useDispatch } from 'react-redux'
+import { Flex, Text, useToast } from '@chakra-ui/react'
 import useTitle from '@/hooks/useTitle'
 import { Input1 } from '@/components/forms/FormElements'
 import Button1 from '@/components/buttons/Button1'
-import { selectAllUsers, useGetUsersQuery } from '../users/usersApiSlice'
 import usePersist from '@/hooks/usePersist'
+import Loader from '@/components/otherComps/Loader'
 
 
 const Login = () => {
@@ -24,8 +23,29 @@ const Login = () => {
 
 
     // const loginMutation = useMemo(() => useLoginMutation(), []);
-    const [login] = useLoginMutation()
+    const [login, { isLoading, isSuccess, isError, error }] = useLoginMutation()
     const dispatch = useDispatch()
+
+    const toast = useToast()
+    useEffect(() => {
+        if (isSuccess) {
+            toast({
+                title: "Login Success!",
+                description: "You have successfully looged in.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            });
+        } else if (isError) {
+            toast({
+                title: "Error!",
+                description: errorMsg,
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            });
+        }
+    }, [isSuccess, isError, error, toast]);
 
     const handleUname = useCallback((e) => setUsername(e.target.value), []);
     const handlePwd = useCallback((e) => setPassword(e.target.value), []);
@@ -57,29 +77,39 @@ const Login = () => {
 
 
     return (
-        <Flex px={"30px"} flexDir={"column"} pb={{ base: "50px", lg: "100px" }} justifyContent={"center"} alignItems={"center"} minH={"90vh"}>
-            <Text className='pri-text'>Login</Text>
-            <form className="contact-form">
-                {/* Name Field */}
-                <Input1
-                    label={"USERNAME"}
-                    type="text"
-                    required={true}
-                    value={username}
-                    func={handleUname}
-                    placeholder="Enter your username" />
+        <>
+            <Flex
+                position="absolute"
+                top="30%"
+                left="50%"
+                transform="translate(-50%, -50%)">
+                {isLoading && <Loader />}
+            </Flex>
+            <Flex px={"30px"} flexDir={"column"} pb={{ base: "50px", lg: "100px" }} justifyContent={"center"} alignItems={"center"} minH={"90vh"}>
+                <Text className='pri-text'>Login</Text>
+                <form className="contact-form">
+                    {/* Name Field */}
+                    <Input1
+                        label={"USERNAME"}
+                        type="text"
+                        required={true}
+                        value={username}
+                        func={handleUname}
+                        placeholder="Enter your username" />
 
-                {/* Email Field */}
-                <Input1
-                    label={"PASSWORD"}
-                    type="password"
-                    required={true}
-                    value={password}
-                    func={handlePwd}
-                    placeholder="Enter your pssword" />
-                <Button1 func={handleSubmit} text={"Submit"} />
-            </form>
-        </Flex>)
+                    {/* Email Field */}
+                    <Input1
+                        label={"PASSWORD"}
+                        type="password"
+                        required={true}
+                        value={password}
+                        func={handlePwd}
+                        placeholder="Enter your pssword" />
+                    <Button1 func={handleSubmit} text={"Submit"} />
+                </form>
+            </Flex>
+        </>
+    )
 
 }
 
