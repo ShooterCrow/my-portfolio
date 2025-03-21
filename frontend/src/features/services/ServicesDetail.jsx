@@ -78,7 +78,6 @@ const ServiceDetail = () => {
               <Box mb={8}>
                 <Text className="pri-text" fontSize="xl" mb={4}>Pricing</Text>
                 <Text className="sec-text">{service.pricing}</Text>
-                {alert(service.pricing)}
               </Box>
             )}
 

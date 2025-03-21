@@ -19,7 +19,6 @@ const Header = () => {
     const [sendLogout, {isLoading, isSuccess, isError, error}] = useSendLogoutMutation()
 
     useEffect(() => {
-        // console.log("Logout Success:", isSuccess);
         if (isSuccess.message == "Logout Successful") navigate("/"); // ✅ Now this will work
     }, [isSuccess, isLoading, navigate]);
     

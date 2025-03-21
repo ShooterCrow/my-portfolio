@@ -90,7 +90,7 @@ const Form1 = () => {
           func={handleEmail}
           placeholder="Write your email" />
 
-        <Flex alignItems={"center"} gap={"10px"} w={"100%"} justifyContent={"space-between"}>
+        <Flex alignItems={"flex-end"} gap={"10px"} w={"100%"} justifyContent={"space-between"}>
           {/* Budget Field */}
           <Input1
             label={"BUDGET"}

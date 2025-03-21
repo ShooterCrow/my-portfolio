@@ -2,10 +2,10 @@ const asyncHandler = require("express-async-handler");
 const Contact = require("../model/Contact");
 
 const createContactMsg = asyncHandler(async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, budget, payment, message } = req.body;
   if (!name || !email || !message)
     return res.status(400).json({ message: "All fields required" });
-  const contactMessage = await Contact.create({ name, email, message });
+  const contactMessage = await Contact.create({ name, email, budget, payment, message });
   if (contactMessage) {
     return res.status(200).json(contactMessage);
   } else {

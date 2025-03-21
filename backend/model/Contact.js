@@ -10,6 +10,14 @@ const contactSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    budget: {
+      type: Number,
+      required: true,
+    },
+    payment: {
+      type: String,
+      required: true,
+    },
     message: {
       type: String,
       required: true,

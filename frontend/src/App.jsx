@@ -1,4 +1,3 @@
-import { createContext, useCallback, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Index from './components/Index'
@@ -19,10 +18,7 @@ import ScrollToTop from './components/otherComps/ScrollToTop'
 import ContactPage from './features/contact/ContactPage'
 import AddNewProject from './features/projects/AddNewProject'
 
-const MenuContext = createContext()
-
 const App = () => {
-
   return (
     <>
       <ScrollToTop />
