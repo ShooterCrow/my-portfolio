@@ -1,7 +1,10 @@
 import { apiSlice } from "@/app/api/apiSlice";
 import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 
-const projectsAdapter = createEntityAdapter({});
+const projectsAdapter = createEntityAdapter({
+  sortComparer: (a, b) => b.createdAt.localeCompare(a.createdAt)
+});
+
 
 const initialState = projectsAdapter.getInitialState();
 
