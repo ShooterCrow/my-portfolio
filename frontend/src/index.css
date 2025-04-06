@@ -70,16 +70,18 @@
 /*// UTILITIES //*/
 
 /*// Typography //*/
-h1, h2, h3, body {
-  font-family: "Anton";
+h1, h2, h3 {
+  font-family: "Anton" !important;
+  letter-spacing: 2px;
 }
 
 h4, h5, h6 {
-  font-family: "Azeret Mono";
+  font-family: "Azeret Mono" !important;
+  /* letter-spacing: 20px; */
 }
 
 p {
-  font-family: "Poppins";
+  font-family: "Azeret Mono" !important;
 }
 
 /*// Banner Header //*/
@@ -102,7 +104,7 @@ p {
 
 /*// Primary Text //*/
 .pri-text {
-  font-family: "Anton";
+  font-family: "Anton" !important;
   font-size: clamp(40px, 8vw, 90px);
 }
 
@@ -118,9 +120,26 @@ p {
   }
 }
 
+.pri-text2 {
+  font-family: "Anton" !important;
+  font-size: clamp(24px, 5vw, 60px);
+}
+
+@media (min-width: 640px) {
+  .pri-text2 {
+    font-size: clamp(32px, 6vw, 60px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pri-text2 {
+    font-size: clamp(40px, 4vw, 60px);
+  }
+}
+
 /*// Secondary Text //*/
 .sec-text {
-  font-family: "Azeret Mono";
+  font-family: "Azeret Mono" !important;
 }
 
 /*// Banner Head Text //*/

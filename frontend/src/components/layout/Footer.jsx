@@ -88,7 +88,7 @@ const Footer = () => {
                     © 2025 Copyright - VIC | Made with ❤️ by "VIC"
                 </Text>
                 <Text textAlign={"center"} fontSize={{ base: "12px", lg: "16px" }} className='sec-text'>
-                    Certifications | Design Process | Site Map
+                    Certifications | <Link to={"design-process"}>Design Process</Link> | Site Map
                 </Text>
             </Flex>
         </footer>

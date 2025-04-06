@@ -60,7 +60,7 @@ const ProjectDetails = () => {
               <Text className='sec-text' mb={6}>{project.description}</Text>
             </Box>
 
-            <Flex gap={4} mt={4}>
+            <Flex flexDir={{base: "column", lg: "row"}} gap={4} mt={4}>
               <Link isExternal href={project.demoLink}>
                 <Button2 isExternal={true}  text={"Live Site"} />
               </Link>

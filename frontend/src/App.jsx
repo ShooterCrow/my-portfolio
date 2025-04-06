@@ -17,6 +17,7 @@ import ServiceDetail from './features/services/ServicesDetail'
 import ScrollToTop from './components/otherComps/ScrollToTop'
 import ContactPage from './features/contact/ContactPage'
 import AddNewProject from './features/projects/AddNewProject'
+import DesignProcessPage from './components/DesignProcess'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/login' element={<Login />} />
             <Route path='/services' element={<ServicesList />} />
+            <Route path='/design-process' element={<DesignProcessPage />} />
             <Route path='/services/:serviceId' element={<ServiceDetail />} />
             <Route path='/projects' >
               <Route index element={<ProjectsList />} />
