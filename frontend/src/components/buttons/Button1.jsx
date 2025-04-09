@@ -6,7 +6,7 @@ import { Link as RouterLink } from "react-router-dom";
 const Button1 = ({ text, subText, func, link = "", useChakraLink, isExternal = false }) => {
   const buttonContent = (
     <button>
-      <Box minW={"fit-content"} onClick={func} className="button1-container">
+      <Box onClick={func} className="button1-container">
         <Flex gap={"10px"} className="button1-style">
           <div className="left-border"></div>
           <div className="right-border"></div>
