@@ -194,8 +194,7 @@ nav {
 }
 
 .button1-style {
-  width: 100%;
-  max-width: 20rem;
+  width: 90vw;
   padding: 8px 40px;
   background-color: #6e3322;
   position: relative;
