@@ -6,6 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-size: 30px;
     word-spacing: 10px;
     letter-spacing: 3px;
 }
