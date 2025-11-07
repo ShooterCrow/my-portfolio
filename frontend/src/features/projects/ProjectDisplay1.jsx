@@ -17,7 +17,7 @@ const useParallaxAnimation = (ref) => {
     return { yParallax };
 };
 
-const ProjectDisplay1 = ({ title, img, tags, projectId }) => {
+const ProjectDisplay1 = ({ name, img, tags, projectId }) => {
 
     const { project } = useGetProjectsQuery("projectsList", {
         selectFromResult: ({ data }) => ({
@@ -30,10 +30,10 @@ const ProjectDisplay1 = ({ title, img, tags, projectId }) => {
     // Use custom animation hook
     const { yParallax } = useParallaxAnimation(ref);
 
-    // Memoize project title and technologies
+    // Memoize project name and technologies
     const projectTitle = useMemo(() =>
-        project?.title?.toUpperCase(),
-        [project?.title]
+        project?.name?.toUpperCase(),
+        [project?.name]
     );
 
     const projectTechnologies = useMemo(() =>
