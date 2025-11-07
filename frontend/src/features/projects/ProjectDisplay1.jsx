@@ -30,7 +30,7 @@ const ProjectDisplay1 = ({ name, img, tags, projectId }) => {
     // Use custom animation hook
     const { yParallax } = useParallaxAnimation(ref);
 
-    console.log(project?.name)
+    console.log(project)
     // Memoize project name and technologies
     const projectTitle = useMemo(() =>
         project?.name?.toUpperCase(),
