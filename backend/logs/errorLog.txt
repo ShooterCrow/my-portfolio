@@ -6,3 +6,17 @@
 21/03/2025 15:42	aa33b6f1-a336-4f25-93b8-b837e294f004	TypeError: Cannot read properties of null (reading 'password')	POST	/auth	::1
 21/03/2025 15:42	e6693369-b64b-43fb-b78d-95708311c9d7	TypeError: Cannot read properties of null (reading 'password')	POST	/auth	::1
 21/03/2025 15:43	9bdc3aa4-1d3b-4c7d-8345-6afb7587c1a0	Error: Cannot set headers after they are sent to the client	POST	/auth	::1
+07/11/2025 13:03	d08ed2a7-8f91-493e-b1e1-beb6451ce7b0	Error: Cannot set headers after they are sent to the client	GET	/contact	::1
+07/11/2025 13:04	208577ae-cdae-4430-bed5-c41c4f2e140b	RangeError: Invalid status code: 30	GET	/contact	::1
+07/11/2025 13:05	7e99ab0a-da54-4771-9bcc-ab459bd76bd9	Error: Cannot set headers after they are sent to the client	GET	/contact	::1
+07/11/2025 13:06	4f200f14-bef1-4fdb-831d-1b18ecbadaf9	Error: Cannot set headers after they are sent to the client	GET	/contact	::1
+07/11/2025 13:12	04f584d9-119e-45d6-9522-2b96d75f4802	Error: Cannot set headers after they are sent to the client	GET	/contact	::1
+07/11/2025 22:53	c7342a16-8531-4ca9-b4b6-867d4f522376	Error: Cannot set headers after they are sent to the client	GET	/projects	::1
+07/11/2025 22:58	e26b3cf0-2281-4fb2-9cce-206b8f82f68a	Error: Cannot set headers after they are sent to the client	GET	/projects	::1
+07/11/2025 22:58	bc2fd462-4260-4332-ab2f-d5938b8fece6	Error: Cannot set headers after they are sent to the client	GET	/projects	::1
+07/11/2025 23:00	a98c69ee-eeb5-45a0-9349-573fe505bce0	Error: Cannot set headers after they are sent to the client	GET	/projects	::1
+07/11/2025 23:13	3c8e72a1-6d96-4e5d-a4eb-b31b3ea0dece	TypeError: p.title.inclues is not a function	GET	/projects	::1
+07/11/2025 23:15	db2dfbb5-c036-4dee-992f-3c2c05ea4743	ReferenceError: unAddedProjects is not defined	GET	/projects	::1
+07/11/2025 23:22	5b332c2c-1a26-4f92-ab5c-0bd42e482982	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/projects	::1
+08/11/2025 00:08	f81022e9-a598-430b-b458-1d34a1b0e90d	ReferenceError: unAddedProjects is not defined	GET	/projects	::1
+08/11/2025 00:09	1225b9b1-f1f4-4343-81be-c47a2eb9fcb1	Error: Cannot set headers after they are sent to the client	GET	/projects	::1

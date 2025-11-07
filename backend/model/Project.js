@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 
 const projectSchema = mongoose.Schema(
-  {
-    title: {
+    {
+      title: {
+        type: String,
+      },
+    gitId: {
       type: String,
-      required: true,
+      required: true
     },
     description: String,
     technologies: {
@@ -13,12 +16,12 @@ const projectSchema = mongoose.Schema(
     },
     githubLink: {
       type: String,
-      required: true,
     },
     demoLink: String,
     image: {
       type: String,
       required: true,
+      default: "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
     },
   },
   { timestamps: true }

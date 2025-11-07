@@ -15,7 +15,7 @@ const verifyJWT = asyncHandler(async (req, res, next) => {
         req.username = decoded.UserInfo.username
         req.roles = decoded.UserInfo.roles
         next()
-    }
+    } 
   )
 });
 

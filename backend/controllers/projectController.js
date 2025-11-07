@@ -32,9 +32,88 @@ const createProject = asyncHandler(async (req, res) => {
 });
 
 const getAllProjects = asyncHandler(async (req, res) => {
-  const projects = await Project.find().lean();
-  if (!projects.length)
+  const { perPage, page } = req.params;
+
+  // FETCH PROJECTS FROM GITHUB
+  const response = await fetch(
+    `https://api.github.com/user/repos?visibility=all&per_page=${100}&page=${1}`,
+    {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github.v3+json",
+      },
+    }
+  );
+  if (!response.ok) {
+    return res
+      .status(response.status)
+      .json({ message: "Failed to fetch GitHub repositories" });
+  }
+  const gitProjects = await response.json();
+
+  // FETCH PROJECTS FROM DATABASE
+  const dbProjects = await Project.find().lean();
+  if (!dbProjects.length)
     return res.status(404).json({ message: "404 Not Found" });
+
+  //COMPARE LENGTHS AND UPDATE MY DATABASE
+  if (dbProjects.length !== gitProjects.length) {
+    if (
+      dbProjects.find((p) => !p.gitId && !p.title.includes("Guru Solutions"))
+    ) {
+      try {
+        const promises = gitProjects.map((u) =>
+          Project.updateOne(
+            { githubLink: u.html_url },
+            { $set: { gitId: u.id } }
+          )
+        );
+        await Promise.all(promises);
+        res.status(200).json({ message: "Batch update successful" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+    }
+
+    const unAddedProjects = gitProjects.filter((project) => {
+      return !dbProjects.some((dbProject) => {
+        return dbProject.gitId?.toString() === project.id?.toString();
+      });
+    });
+
+    if (unAddedProjects.length > 0) {
+      try {
+        const promises = unAddedProjects.map((u) =>
+          Project.create({
+            gitId: u.id,
+            technologies: [u.language || "Not Specified"],
+            image:
+              u.image ||
+              "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
+          })
+        );
+        await Promise.all(promises);
+        res.status(200).json({ message: "Batch create successful" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+    }
+  }
+
+  const projects = gitProjects.map((git) => {
+    const match = dbProjects.find((db) => (db.id === git.gitId || db.title.includes("Guru Solutions")));
+    return { ...git, ...match };
+  });
+
+  // const projects = [
+  //   ...dbProjects,
+  //   ...gitProjects.map((u) => ({
+  //     gitId: u.id,
+  //     technologies: [u.language || "Not Specified"],
+  //     image:
+  //       u.image || "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
+  //   })),
+  // ];
   return res.status(200).json(projects);
 });
 
@@ -52,9 +131,12 @@ const updateProject = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: "Project Not Found" });
   }
 
-  const isChanged = Object.keys(req.body).some( (key) => req.body[key]?.toString() !== project[key]?.toString() );
+  const isChanged = Object.keys(req.body).some(
+    (key) => req.body[key]?.toString() !== project[key]?.toString()
+  );
 
-  if (!isChanged) return res.status(400).json({ message: "No changes detected" });
+  if (!isChanged)
+    return res.status(400).json({ message: "No changes detected" });
 
   if (title) project.title = title;
   if (description) project.description = description;
