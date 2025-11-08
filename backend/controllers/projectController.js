@@ -91,10 +91,7 @@ const getAllProjects = asyncHandler(async (req, res) => {
               gitId: u.id,
               description: u.description,
               technologies: [u.language || "Not Specified"],
-              githubLink: u.html_url, // Added missing field
-              image:
-                u.image ||
-                "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
+              githubLink: u.html_url,
             })
           )
         );
