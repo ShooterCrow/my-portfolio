@@ -58,7 +58,7 @@ const getAllProjects = asyncHandler(async (req, res) => {
   if (dbProjects.length !== gitProjects.length) {
     // Check if there are projects missing gitId (excluding Guru Solutions)
     const projectsNeedingGitId = dbProjects.filter(
-      (p) => !p.gitId && !p.title.includes("Guru Solutions")
+      (p) => !p.gitId && !p.title?.includes("Guru Solutions")
     );
 
     if (projectsNeedingGitId.length > 0) {
@@ -109,7 +109,7 @@ const getAllProjects = asyncHandler(async (req, res) => {
   // Merge GitHub and DB data
   const projects = gitProjects.map((git) => {
     const match = dbProjects.find(
-      (db) => db.gitId?.toString() === git.id?.toString() || db.title.includes("Guru")
+      (db) => db.gitId?.toString() === git.id?.toString() || db.title?.includes("Guru")
     );
     return match ? { ...git, ...match } : git;
   });
