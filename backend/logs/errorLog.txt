@@ -20,3 +20,5 @@
 07/11/2025 23:22	5b332c2c-1a26-4f92-ab5c-0bd42e482982	TypeError: Cannot read properties of undefined (reading 'toString')	GET	/projects	::1
 08/11/2025 00:08	f81022e9-a598-430b-b458-1d34a1b0e90d	ReferenceError: unAddedProjects is not defined	GET	/projects	::1
 08/11/2025 00:09	1225b9b1-f1f4-4343-81be-c47a2eb9fcb1	Error: Cannot set headers after they are sent to the client	GET	/projects	::1
+08/11/2025 01:37	1d6c8a8c-3d9f-4216-a5ed-6e0e7d94cc10	TypeError: Cannot read properties of undefined (reading 'includes')	GET	/projects	::1
+08/11/2025 01:38	1bacf7bf-bece-4f05-b215-f1b5c678c8bb	TypeError: Cannot read properties of undefined (reading 'includes')	GET	/projects	::1

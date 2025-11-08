@@ -32,11 +32,11 @@ const createProject = asyncHandler(async (req, res) => {
 });
 
 const getAllProjects = asyncHandler(async (req, res) => {
-  const { perPage, page } = req.params;
+  const { perPage = 100, page = 1 } = req.query; // Changed from req.params to req.query
 
   // FETCH PROJECTS FROM GITHUB
   const response = await fetch(
-    `https://api.github.com/user/repos?visibility=all&per_page=${100}&page=${1}`,
+    `https://api.github.com/user/repos?visibility=all&per_page=${perPage}&page=${page}`,
     {
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -53,14 +53,15 @@ const getAllProjects = asyncHandler(async (req, res) => {
 
   // FETCH PROJECTS FROM DATABASE
   const dbProjects = await Project.find().lean();
-  if (!dbProjects.length)
-    return res.status(404).json({ message: "404 Not Found" });
-
-  //COMPARE LENGTHS AND UPDATE MY DATABASE
+  
+  // COMPARE LENGTHS AND UPDATE MY DATABASE
   if (dbProjects.length !== gitProjects.length) {
-    if (
-      dbProjects.find((p) => !p.gitId && !p.title.includes("Guru Solutions"))
-    ) {
+    // Check if there are projects missing gitId (excluding Guru Solutions)
+    const projectsNeedingGitId = dbProjects.filter(
+      (p) => !p.gitId && !p.title.includes("Guru Solutions")
+    );
+
+    if (projectsNeedingGitId.length > 0) {
       try {
         const promises = gitProjects.map((u) =>
           Project.updateOne(
@@ -69,12 +70,12 @@ const getAllProjects = asyncHandler(async (req, res) => {
           )
         );
         await Promise.all(promises);
-        res.status(200).json({ message: "Batch update successful" });
       } catch (err) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: err.message });
       }
     }
 
+    // Find projects in GitHub but not in DB
     const unAddedProjects = gitProjects.filter((project) => {
       return !dbProjects.some((dbProject) => {
         return dbProject.gitId?.toString() === project.id?.toString();
@@ -83,37 +84,36 @@ const getAllProjects = asyncHandler(async (req, res) => {
 
     if (unAddedProjects.length > 0) {
       try {
-        const promises = unAddedProjects.map((u) =>
-          Project.create({
-            gitId: u.id,
-            technologies: [u.language || "Not Specified"],
-            image:
-              u.image ||
-              "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
-          })
+        const newProjects = await Promise.all(
+          unAddedProjects.map((u) =>
+            Project.create({
+              title: u.name,
+              gitId: u.id,
+              description: u.description,
+              technologies: [u.language || "Not Specified"],
+              githubLink: u.html_url, // Added missing field
+              image:
+                u.image ||
+                "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
+            })
+          )
         );
-        await Promise.all(promises);
-        res.status(200).json({ message: "Batch create successful" });
+        // Refresh dbProjects after creating new ones
+        dbProjects.push(...newProjects.map(p => p.toObject()));
       } catch (err) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: err.message });
       }
     }
   }
 
+  // Merge GitHub and DB data
   const projects = gitProjects.map((git) => {
-    const match = dbProjects.find((db) => (db.id === git.gitId || db.title.includes("Guru Solutions")));
-    return { ...git, ...match };
+    const match = dbProjects.find(
+      (db) => db.gitId?.toString() === git.id?.toString() || db.title.includes("Guru")
+    );
+    return match ? { ...git, ...match } : git;
   });
 
-  // const projects = [
-  //   ...dbProjects,
-  //   ...gitProjects.map((u) => ({
-  //     gitId: u.id,
-  //     technologies: [u.language || "Not Specified"],
-  //     image:
-  //       u.image || "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
-  //   })),
-  // ];
   return res.status(200).json(projects);
 });
 
@@ -156,7 +156,7 @@ const updateProject = asyncHandler(async (req, res) => {
 const deleteProject = asyncHandler(async (req, res) => {
   const { id } = req.body;
   if (!id) return res.sendStatus(400);
-  const project = await Project.findById(id);
+  const project = await Project.findById({_id: id});
   if (!project) return res.status(404).json({ message: "Project Not Found" });
   const result = await project.deleteOne();
   if (result) return res.json({ l: 99 });
