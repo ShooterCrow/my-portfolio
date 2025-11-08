@@ -114,7 +114,7 @@ const getAllProjects = asyncHandler(async (req, res) => {
     return match ? { ...git, ...match } : git;
   });
 
-  return res.status(200).json(projects);
+  return res.status(200).json(dbProjects);
 });
 
 const updateProject = asyncHandler(async (req, res) => {
