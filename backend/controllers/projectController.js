@@ -82,7 +82,7 @@ const getAllProjects = asyncHandler(async (req, res) => {
       });
     });
 
-    if (unAddedProjects.length > 0) {
+    if (unAddedProjects.length > 0 && false) {
       try {
         const newProjects = await Promise.all(
           unAddedProjects.map((u) =>
