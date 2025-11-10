@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 
 const projectSchema = mongoose.Schema(
-    {
-      title: {
-        type: String,
-      },
+  {
+    title: {
+      type: String,
+    },
     gitId: {
       type: String,
-      required: true
     },
     description: String,
     technologies: {
@@ -23,6 +22,31 @@ const projectSchema = mongoose.Schema(
       required: true,
       default: "https://placehold.co/600x400/1e293b/fff?text=Project+Image",
     },
+    featured: {
+      type: Boolean,
+      default: false,
+    },
+    gitProject: {
+      type: Boolean,
+      default: false,
+    },
+    icon: {
+      url: String,
+      publicId: String,
+      width: Number,
+      height: Number,
+      format: String,
+    },
+    screenshots: [
+      {
+        url: String,
+        publicId: String,
+        width: Number,
+        height: Number,
+        format: String,
+        deleted: Boolean,
+      },
+    ],
   },
   { timestamps: true }
 );
