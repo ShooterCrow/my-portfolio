@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Index from './components/Index'
 import Login from './features/auth/Login'
-import Dashboard from './components/Dashboard'
+import Dashboard from './features/adminPages/Dashboard'
 import NotFound from './components/NotFound'
 import ProjectsList from './features/projects/ProjectsList'
 import ProjectDetails from './features/projects/ProjectDetails'
@@ -16,8 +16,22 @@ import ServicesList from './features/services/ServicesList'
 import ServiceDetail from './features/services/ServicesDetail'
 import ScrollToTop from './components/otherComps/ScrollToTop'
 import ContactPage from './features/contact/ContactPage'
-import AddNewProject from './features/projects/AddNewProject'
+import AddNewProject from './features/adminPages/AddNewProject'
 import DesignProcessPage from './components/DesignProcess'
+import { DashboardLayoutProvider } from './components/layout/DashboardLayoutContext'
+import UserLayout from './components/layout/UserLayout'
+import ContactMsgsList from './features/contact/ContactMsgsList'
+import Learn from './features/learn/Learn'
+import Profile from './features/profile/Profile'
+import UsersList from './features/users/UsersList'
+import Projects from './features/adminPages/Projects'
+
+// Create wrapper components that include ClaimStatusProvider
+const UserLayoutWithProvider = () => (
+  <DashboardLayoutProvider>
+    <UserLayout />
+  </DashboardLayoutProvider>
+)
 
 const App = () => {
   return (
@@ -41,9 +55,18 @@ const App = () => {
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth />}>
                 <Route element={<Prefetch />}>
-                  <Route path='dashboard' element={<Dashboard />} />
-                  <Route path='editproject/:id' element={<EditProject />} />
-                  <Route path='addproject' element={<AddNewProject />} />
+                  <Route path='dashboard' element={<UserLayoutWithProvider />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path='projects'>
+                      <Route index element={<Projects />} />
+                      <Route path='editproject/:id' element={<EditProject />} />
+                      <Route path='addproject' element={<AddNewProject />} />
+                    </Route>
+                    <Route path='messages' element={<ContactMsgsList />} />
+                    <Route path='users' element={<UsersList />} />
+                    <Route path='learn' element={<Learn />} />
+                    <Route path='profile' element={<Profile />} />
+                  </Route>
                 </Route>
               </Route>
             </Route>

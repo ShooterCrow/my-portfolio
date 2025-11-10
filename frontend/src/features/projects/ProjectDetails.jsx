@@ -16,6 +16,8 @@ const ProjectDetails = () => {
   const { isLoading, isSuccess, isError, error } = useGetProjectsQuery()
   const project = useSelector(state => selectProjectById(state, projectId))
 
+  console.log(project)
+
 
   let content
 
@@ -46,8 +48,8 @@ const ProjectDetails = () => {
 
         {/* Using our new ParallaxImage component */}
         <ParallaxImage
-          imagePath={`/projectsImgs/${project.image}`}
-          height="50vh"
+          imagePath={`${project.image}`}
+          height="60vh"
           showOverlay={false}
           showContent={false} // No text overlay on the project details page
           blurAmount="5px"

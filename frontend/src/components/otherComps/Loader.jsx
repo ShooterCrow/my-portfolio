@@ -5,6 +5,24 @@ import { motion } from "framer-motion";
 const MotionBox = motion.create(Box);
 const MotionFlex = motion.create(Flex);
 
+const sizeConfig = {
+  small: {
+    height: "24px",
+    width: "4px",
+    gap: "2px"
+  },
+  medium: {
+    height: "36px",
+    width: "6px",
+    gap: "3px"
+  },
+  large: {
+    height: "48px",
+    width: "8px",
+    gap: "4px"
+  }
+};
+
 const variants = {
   initial: {
     scaleY: 0.5,
@@ -22,7 +40,9 @@ const variants = {
   },
 };
 
-const Loader = () => {
+const Loader = ({ size = "large" }) => {
+  const { height, width, gap } = sizeConfig[size];
+
   return (
     <MotionFlex
       transition={{
@@ -30,13 +50,15 @@ const Loader = () => {
       }}
       initial="initial"
       animate="animate"
-      gap="4px"
+      gap={gap}
+      align="center"
+      justify="center"
     >
-      <MotionBox variants={variants} height="48px" width="8px" bg="white" />
-      <MotionBox variants={variants} height="48px" width="8px" bg="white" />
-      <MotionBox variants={variants} height="48px" width="8px" bg="white" />
-      <MotionBox variants={variants} height="48px" width="8px" bg="white" />
-      <MotionBox variants={variants} height="48px" width="8px" bg="white" />
+      <MotionBox variants={variants} height={height} width={width} bg="white" />
+      <MotionBox variants={variants} height={height} width={width} bg="white" />
+      <MotionBox variants={variants} height={height} width={width} bg="white" />
+      <MotionBox variants={variants} height={height} width={width} bg="white" />
+      <MotionBox variants={variants} height={height} width={width} bg="white" />
     </MotionFlex>
   );
 };

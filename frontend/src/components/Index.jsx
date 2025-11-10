@@ -21,11 +21,19 @@ import { ContactSection } from "@/features/contact/ContactPage";
 const MotionBox = motion.create(Box)
 
 const Index = () => {
+  const query = {
+    perPage: 5,
+    page: 1,
+    featured: "true"
+  }
   const {
+    data,
     isLoading: isProjectLoading,
     isSuccess: isProjectSuccess,
     isError: isProjectError,
-    error: projectError } = useGetProjectsQuery()
+    error: projectError } = useGetProjectsQuery(query)
+
+    console.log(data)
 
   const projects = useSelector(selectAllProjects);
 

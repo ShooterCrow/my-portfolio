@@ -3,10 +3,11 @@ import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
 
-const Button2 = ({ text, subText, func, link = "", useChakraLink = false, isExternal = false }) => {
+const Button2 = ({ icon, text, subText, func, link = "", useChakraLink = false, isExternal = false }) => {
   const buttonContent = (
     <Box onClick={func} className="button2-container">
       <Flex gap={"10px"} className="button2-style">
+        {icon}
         <div className="content-container" data-hover={subText || text}>
           <h3 className="button2-text">{text}</h3>
         </div>

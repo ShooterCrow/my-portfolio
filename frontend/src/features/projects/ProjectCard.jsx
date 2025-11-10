@@ -42,7 +42,7 @@ const ProjectCard = ({ projectId }) => {
                 spacing={{ base: 2, sm: 3 }}
                 justifyContent="space-between" >
                 <Button2 text="Delete" func={handleDelete} size={buttonSize} />
-                <Link to={`/editproject/${project.id}`}>
+                <Link to={`/dashboard/projects/editproject/${project.id}`}>
                     <Button2 text="Edit Project" func={() => { }} size={buttonSize} />
                 </Link>
             </Stack>
