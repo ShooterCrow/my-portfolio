@@ -282,6 +282,31 @@ nav {
   z-index: 1;
 }
 
+.button2-style-border {
+  width: 100%;
+  max-width: 20rem;
+  padding: 8px 30px;
+  background-color: rgba(255, 75, 32, 0.1);
+  border: 1px solid var(--primary-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.button2-text-border {
+  color: var(--primary-color);
+  font-family: "Azeret Mono";
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
 .left-border,
 .right-border {
   position: absolute;

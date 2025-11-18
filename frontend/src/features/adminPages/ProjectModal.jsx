@@ -1,18 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { 
+import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Flex, 
-  Text, 
-  VStack, 
-  HStack, 
-  Box, 
-  Image, 
-  IconButton, 
+  Flex,
+  Text,
+  VStack,
+  HStack,
+  Box,
+  Image,
+  IconButton,
   useToast,
   Checkbox,
   FormControl,
@@ -33,6 +33,7 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
     githubLink: "",
     demoLink: "",
     featured: false,
+    showProject: false,
   });
 
   const [iconFile, setIconFile] = useState(null);
@@ -42,18 +43,18 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
   const [existingIcon, setExistingIcon] = useState("");
   const [existingScreenshots, setExistingScreenshots] = useState([]);
 
-  const [addProject, { 
-    isLoading: isAddLoading, 
-    isSuccess: isAddSuccess, 
-    isError: isAddError, 
-    error: addError 
+  const [addProject, {
+    isLoading: isAddLoading,
+    isSuccess: isAddSuccess,
+    isError: isAddError,
+    error: addError
   }] = useAddProjectMutation();
 
-  const [updateProject, { 
-    isLoading: isUpdateLoading, 
-    isSuccess: isUpdateSuccess, 
-    isError: isUpdateError, 
-    error: updateError 
+  const [updateProject, {
+    isLoading: isUpdateLoading,
+    isSuccess: isUpdateSuccess,
+    isError: isUpdateError,
+    error: updateError
   }] = useUpdateProjectMutation();
 
   const isLoading = isAddLoading || isUpdateLoading;
@@ -73,12 +74,13 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
         githubLink: project.githubLink || "",
         demoLink: project.demoLink || "",
         featured: project.featured || false,
+        showProject: project.showProject || false,
       });
-      
+
       if (project.icon?.url) {
         setExistingIcon(project.icon.url);
       }
-      
+
       if (project.screenshots) {
         setExistingScreenshots(project.screenshots);
       }
@@ -94,16 +96,17 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
       githubLink: "",
       demoLink: "",
       featured: false,
+      showProject: false,
     });
     setIconFile(null);
     setScreenshotFiles([]);
     setExistingIcon("");
     setExistingScreenshots([]);
-    
+
     // Clean up preview URLs
     if (iconPreview) URL.revokeObjectURL(iconPreview);
     screenshotPreviews.forEach(preview => URL.revokeObjectURL(preview));
-    
+
     setIconPreview("");
     setScreenshotPreviews([]);
   }, [iconPreview, screenshotPreviews]);
@@ -122,15 +125,15 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
     } else if (isError) {
       toast({
         title: "Error!",
-        description: typeof error?.data?.message === "object" 
-          ? "Something went wrong" 
+        description: typeof error?.data?.message === "object"
+          ? "Something went wrong"
           : error?.data?.message,
         status: "error",
         duration: 5000,
         isClosable: true,
       });
     }
-  }, [isSuccess, isError, error, toast, onClose, resetForm, isEdit]);
+  }, [isSuccess, isError, error, toast]);
 
   // Handle icon file selection
   const handleIconChange = useCallback((e) => {
@@ -170,7 +173,7 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
   // Handle screenshot files selection
   const handleScreenshotsChange = useCallback((e) => {
     const files = Array.from(e.target.files || []);
-    
+
     const totalScreenshots = screenshotFiles.length + existingScreenshots.length + files.length;
     if (totalScreenshots > 10) {
       toast({
@@ -250,7 +253,7 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-    
+
     if (!formData.title || !formData.technologies) {
       toast({
         title: "Missing required fields",
@@ -283,6 +286,7 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
       githubLink: formData.githubLink,
       demoLink: formData.demoLink,
       featured: formData.featured,
+      showProject: formData.showProject,
     };
 
     // Only include files if they are provided
@@ -320,27 +324,27 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
   };
 
   const modalTitle = isEdit ? "Edit Project" : "Add New Project";
-  const submitButtonText = isLoading 
-    ? `${isEdit ? "Updating" : "Creating"} Project...` 
+  const submitButtonText = isLoading
+    ? `${isEdit ? "Updating" : "Creating"} Project...`
     : `${isEdit ? "Update" : "Create"} Project`;
 
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={handleClose} 
-      size="4xl" 
+    <Modal
+      isOpen={isOpen}
+      onClose={handleClose}
+      size="4xl"
       scrollBehavior="inside"
       closeOnOverlayClick={!isLoading}
     >
       <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(10px)" />
-      <ModalContent 
-        bg="#1a1a1a" 
-        border="1px solid" 
+      <ModalContent
+        bg="#1a1a1a"
+        border="1px solid"
         borderColor="gray.700"
         maxH="90vh"
       >
-        <ModalHeader 
-          borderBottom="1px solid" 
+        <ModalHeader
+          borderBottom="1px solid"
           borderColor="gray.700"
           color="white"
           fontSize="2xl"
@@ -351,12 +355,12 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
             <Text>{modalTitle}</Text>
           </HStack>
         </ModalHeader>
-        <ModalCloseButton 
-          color="gray.400" 
+        <ModalCloseButton
+          color="gray.400"
           _hover={{ color: "#ff4b20", bg: "rgba(255, 75, 32, 0.1)" }}
           isDisabled={isLoading}
         />
-        
+
         <ModalBody py="6">
           <form onSubmit={handleSubmit}>
             <VStack spacing="6" align="stretch">
@@ -414,20 +418,37 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
                 />
               </HStack>
 
-              {/* Featured Checkbox */}
-              <FormControl>
-                <HStack>
-                  <Checkbox
-                    isChecked={formData.featured}
-                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                    colorScheme="orange"
-                    size="lg"
-                  />
-                  <FormLabel className="sec-text" color="gray.300" mb="0">
-                    Feature this project
-                  </FormLabel>
-                </HStack>
-              </FormControl>
+              <HStack spacing="8" align="start">
+                {/* Show This Project */}
+                <FormControl>
+                  <HStack>
+                    <Checkbox
+                      isChecked={formData.showProject}
+                      onChange={(e) => setFormData({ ...formData, showProject: e.target.checked })}
+                      colorScheme="orange"
+                      size="lg"
+                    />
+                    <FormLabel className="sec-text" color="gray.300" mb="0">
+                      Make This Project Public
+                    </FormLabel>
+                  </HStack>
+                </FormControl>
+
+                {/* Featured Checkbox */}
+                <FormControl>
+                  <HStack>
+                    <Checkbox
+                      isChecked={formData.featured}
+                      onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                      colorScheme="orange"
+                      size="lg"
+                    />
+                    <FormLabel className="sec-text" color="gray.300" mb="0">
+                      Feature this project
+                    </FormLabel>
+                  </HStack>
+                </FormControl>
+              </HStack>
 
               {/* Icon Upload */}
               <Box>
@@ -508,7 +529,7 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
                     {screenshotFiles.length + existingScreenshots.length} / 10
                   </Text>
                 </HStack>
-                
+
                 <SimpleGrid columns={{ base: 2, md: 3 }} spacing="4">
                   {/* Existing Screenshots */}
                   {existingScreenshots.map((screenshot, index) => (
@@ -619,8 +640,8 @@ const ProjectModal = ({ isOpen, onClose, project = null, isEdit = false }) => {
 
               {/* Submit Button */}
               <HStack spacing="3" pt="4">
-                <Button1 
-                  text={submitButtonText} 
+                <Button1
+                  text={submitButtonText}
                   func={handleSubmit}
                   isLoading={isLoading}
                 />

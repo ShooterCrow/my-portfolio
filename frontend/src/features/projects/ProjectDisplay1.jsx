@@ -30,7 +30,6 @@ const ProjectDisplay1 = ({ title, img, tags, projectId }) => {
     // Use custom animation hook
     const { yParallax } = useParallaxAnimation(ref);
 
-    console.log(project)
     // Memoize project title and technologies
     const projectTitle = useMemo(() =>
         project?.title?.toUpperCase(),
@@ -68,7 +67,7 @@ const ProjectDisplay1 = ({ title, img, tags, projectId }) => {
                         position="absolute"
                         width="100%"
                         height="100%"
-                        backgroundImage={`url(${`/projectsImgs/${project?.image}`})`}
+                        backgroundImage={`url(${`${project?.icon?.url || project?.image}`})`}
                         backgroundSize="cover"
                         backgroundPosition="center"
                         zIndex="0" />

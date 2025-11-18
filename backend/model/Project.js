@@ -26,6 +26,10 @@ const projectSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    showProject: {
+      type: Boolean,
+      default: false,
+    },
     gitProject: {
       type: Boolean,
       default: false,

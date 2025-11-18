@@ -270,9 +270,26 @@ const createProject = asyncHandler(async (req, res) => {
     technologies = technologies.split(",").map((tech) => tech.trim());
   }
 
+  if (technologies) {
+    if (typeof technologies === "string") {
+      try {
+        // Try to parse as JSON first (from FormData with JSON.stringify)
+        technologies = JSON.parse(technologies);
+      } catch (e) {
+        // If not JSON, treat as comma-separated string
+        technologies = technologies.split(",").map((tech) => tech.trim());
+      }
+    }
+
+    // Ensure it's an array
+    if (!Array.isArray(technologies)) {
+      technologies = [technologies];
+    }
+  }
+
   // Validate featured field
   if (featured !== undefined && typeof featured !== "boolean") {
-     if (featured.toLowerCase() === "true") {
+    if (featured.toLowerCase() === "true") {
       featured = true;
     } else if (featured.toLowerCase() === "false") {
       featured = false;
@@ -388,7 +405,7 @@ const createProject = asyncHandler(async (req, res) => {
 });
 
 const getAllProjects = asyncHandler(async (req, res) => {
-  const { perPage = 100, page = 1, featured } = req.query;
+  const { perPage = 100, page = 1, featured, showProject } = req.query;
 
   try {
     let dbQuery = {};
@@ -397,6 +414,13 @@ const getAllProjects = asyncHandler(async (req, res) => {
     if (featured !== undefined) {
       dbQuery.featured = featured === "true";
     }
+
+    // Show project filter
+    if (showProject !== undefined) {
+      dbQuery.showProject = showProject === "true";
+    }
+
+    console.log("DB Query:", dbQuery);
 
     // FETCH PROJECTS FROM DATABASE with pagination
     const projects = await Project.find(dbQuery)
@@ -478,6 +502,7 @@ const getGithubProjectsAndUpdate = asyncHandler(async (req, res) => {
             githubLink: project.html_url,
             gitProject: true,
             featured: false,
+            showProject: false,
           }))
         );
         createdCount = newProjects.length;
@@ -757,7 +782,7 @@ const getProject = asyncHandler(async (req, res) => {
 });
 
 const updateProject = asyncHandler(async (req, res) => {
-  let { id, title, description, technologies, githubLink, demoLink, featured } =
+  let { id, title, description, technologies, githubLink, demoLink, featured, showProject } =
     req.body;
 
   if (typeof featured === "string") {
@@ -793,8 +818,19 @@ const updateProject = asyncHandler(async (req, res) => {
 
     // Validate technologies if provided
     if (technologies) {
+      if (typeof technologies === "string") {
+        try {
+          // Try to parse as JSON first (from FormData with JSON.stringify)
+          technologies = JSON.parse(technologies);
+        } catch (e) {
+          // If not JSON, treat as comma-separated string
+          technologies = technologies.split(",").map((tech) => tech.trim());
+        }
+      }
+
+      // Ensure it's an array
       if (!Array.isArray(technologies)) {
-        technologies = technologies.split(",").map((tech) => tech.trim());
+        technologies = [technologies];
       }
     }
 
@@ -866,6 +902,7 @@ const updateProject = asyncHandler(async (req, res) => {
       updateData.githubLink = sanitizeInput(githubLink);
     if (demoLink !== undefined) updateData.demoLink = sanitizeInput(demoLink);
     if (featured !== undefined) updateData.featured = featured;
+    if (showProject !== undefined) updateData.showProject = showProject;
     if (fileProcessingResult.icon) updateData.icon = fileProcessingResult.icon;
     if (fileProcessingResult.screenshots)
       updateData.screenshots = fileProcessingResult.screenshots;
@@ -1022,5 +1059,5 @@ module.exports = {
   getProject,
   updateProject,
   deleteProject,
-  deleteAllProjects
+  deleteAllProjects,
 };

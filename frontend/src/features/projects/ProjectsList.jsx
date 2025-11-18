@@ -5,13 +5,19 @@ import Loader from '@/components/otherComps/Loader';
 import { Box, Text, Center, Flex } from '@chakra-ui/react';
 
 const ProjectsList = () => {
+  const query = {
+    // perPage: 5,
+    // page: 1,
+    featured: "true",
+    showProject: "true"
+  }
   const {
     data: projects,
     isLoading: isProjectLoading,
     isSuccess: isProjectSuccess,
     isError: isProjectError,
     error: projectError 
-  } = useGetProjectsQuery("projectsList", {
+  } = useGetProjectsQuery(query, {
     refetchOnFocus: true,
     refetchOnMountOrArgChange: false
   });

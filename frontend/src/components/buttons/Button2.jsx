@@ -3,13 +3,14 @@ import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
 
-const Button2 = ({ icon, text, subText, func, link = "", useChakraLink = false, isExternal = false }) => {
+const Button2 = ({ icon, text, subText, func, link = "", useChakraLink = false, isExternal = false, border = false }) => {
   const buttonContent = (
     <Box onClick={func} className="button2-container">
-      <Flex gap={"10px"} className="button2-style">
+      <Flex gap={"10px"} className={border ? "button2-style-border" : "button2-style"}>
         {icon}
-        <div className="content-container" data-hover={subText || text}>
-          <h3 className="button2-text">{text}</h3>
+         {/* data-hover={subText || text} */}
+        <div className="content-container">
+          <h3 className={border ? "button2-text-border" : "button2-text"}>{text}</h3>
         </div>
         {isExternal && <FaExternalLinkAlt />}
       </Flex>

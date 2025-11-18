@@ -14,10 +14,13 @@ const initialState = projectsAdapter.getInitialState();
 export const projectApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProjects: builder.query({
-      query: ({ featured } = {}) => {
+      query: ({ featured, showProject } = {}) => {
         const params = {};
         if (featured !== undefined) {
           params.featured = featured;
+        }
+        if (showProject !== undefined) {
+          params.showProject = showProject;
         }
         return {
           url: `/projects`,
@@ -119,6 +122,8 @@ export const projectApiSlice = apiSlice.injectEndpoints({
           formData.append("demoLink", projectData.demoLink);
         if (projectData.featured !== undefined)
           formData.append("featured", projectData.featured);
+        if (projectData.showProject !== undefined)
+          formData.append("showProject", projectData.showProject);
 
         // Append files
         if (projectData.icon) {

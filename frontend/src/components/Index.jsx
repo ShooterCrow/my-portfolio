@@ -22,9 +22,10 @@ const MotionBox = motion.create(Box)
 
 const Index = () => {
   const query = {
-    perPage: 5,
+    perPage: 4,
     page: 1,
-    featured: "true"
+    featured: "true",
+    showProject: "true"
   }
   const {
     data,
@@ -33,16 +34,15 @@ const Index = () => {
     isError: isProjectError,
     error: projectError } = useGetProjectsQuery(query)
 
-    console.log(data)
-
-  const projects = useSelector(selectAllProjects);
+    const projects = data?.ids?.map(id => data.entities[id]) || [];
+    console.log(data, projects)
 
   const projectsList = useMemo(() => {
     if (isProjectLoading) return <Loader />
     if (isProjectError) return <Text className="sec-text" color={""} >Something went wrong, try again</Text>
     if (isProjectSuccess) {
       return projects?.slice(0, 4).map(project => (
-        <ProjectDisplay1 key={project.id} projectId={project.id} img={"/me.jpeg"} />
+        <ProjectDisplay1 key={project.id} projectId={project.id} img={"./me.jpeg"} />
       ));
     }
     return null;
@@ -108,8 +108,7 @@ const Index = () => {
 
   return (
     <Box
-      mt={"-100px"}
-    >
+      mt={"-100px"} >
       {/* Banner Section */}
       <section>
         <Flex

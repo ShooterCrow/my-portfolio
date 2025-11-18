@@ -19,9 +19,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ArrowRight, Edit, Github, Trash2, LoaderPinwheel } from "lucide-react";
 import { useSelector } from "react-redux";
-import { selectAllProjects, useDeleteProjectMutation, useGetProjectsQuery } from "../projects/projectsApiSlice";
+import { selectAllProjects, useDeleteProjectMutation, useGetGithubProjectsAndUpdateMutation, useGetProjectsQuery } from "../projects/projectsApiSlice";
 import Loader from "@/components/otherComps/Loader";
 import ProjectModal from "./ProjectModal";
+import Button2 from "@/components/buttons/Button2";
 
 const MotionBox = motion.create(Box);
 
@@ -29,9 +30,9 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [deleteProject, { isSuccess: isDeleteProjectSuccess, isLoading: isDeleteProjectLoading }] = useDeleteProjectMutation()
   const handleDelete = async (e) => {
-    await deleteProject({id: e})
+    await deleteProject({ id: e })
   }
-  
+
 
   return (
     <MotionBox
@@ -235,7 +236,7 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
                   color="gray.400"
                   border="1px solid"
                   borderColor="rgba(255, 255, 255, 0.1)"
-                  borderRadius="lg"
+                  borderRadius="xs"
                   _hover={{
                     bg: "rgba(255, 75, 32, 0.1)",
                     color: "#ff4b20",
@@ -256,7 +257,7 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
                 border="1px solid"
                 onClick={() => handleDelete(project._id)}
                 borderColor="rgba(255, 255, 255, 0.1)"
-                borderRadius="lg"
+                borderRadius="xs"
                 _hover={{
                   bg: "rgba(255, 75, 32, 0.1)",
                   color: "#ff4b20",
@@ -278,7 +279,7 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
                   color="gray.400"
                   border="1px solid"
                   borderColor="rgba(255, 255, 255, 0.1)"
-                  borderRadius="lg"
+                  borderRadius="xs"
                   _hover={{
                     bg: "rgba(255, 75, 32, 0.1)",
                     color: "#ff4b20",
@@ -292,7 +293,8 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
             </HStack>
 
             {/* View Details Button */}
-            <Button
+            <Button2 text={"Details"} onClick={onOpen} to={`/projects/${project._id || project.id}`} />
+            {/* <Button
               as={Link}
               to={`/projects/${project._id || project.id}`}
               flex="1"
@@ -309,7 +311,7 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
               transition="all 0.2s ease-in-out"
             >
               Details
-            </Button>
+            </Button> */}
           </HStack>
         </VStack>
 
@@ -329,15 +331,17 @@ ProjectCard.displayName = 'ProjectCard';
 
 const Projects = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+  const [getGithubProjectsAndUpdate, { isSuccess: isGitUpdateSuccess, isLoading: isGitUpdateLoading, isError: isGitUpdateError }] = useGetGithubProjectsAndUpdateMutation()
   const { isLoading, isError, error } = useGetProjectsQuery();
   const projects = useSelector(selectAllProjects);
-  console.log(projects)
 
+  const handleGitSync = async () => {
+    await getGithubProjectsAndUpdate();
+  }
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTech, setFilterTech] = useState("all");
-  const [sortBy, setSortBy] = useState("newest");
+  const [sortBy, setSortBy] = useState("featured");
 
   // Filter and sort projects
   const filteredProjects = useMemo(() => {
@@ -419,22 +423,10 @@ const Projects = () => {
         </Text>
 
         {/* Add Project Button */}
-        <Button
-          onClick={onOpen}
-          bg="linear-gradient(135deg, #ff4b20 0%, #ff6b3d 100%)"
-          color="white"
-          fontWeight="bold"
-          borderRadius="lg"
-          _hover={{
-            bg: "linear-gradient(135deg, #ff6b3d 0%, #ff8c42 100%)",
-            transform: "translateY(-2px)",
-            boxShadow: "0 8px 20px rgba(255, 75, 32, 0.4)"
-          }}
-          transition="all 0.2s ease-in-out"
-          size="lg"
-        >
-          Add New Project
-        </Button>
+        <HStack spacing="4" width={"full"}>
+          <Button2 text={"Add New Project"} func={onOpen} />
+          <Button2 border={true} text={isGitUpdateLoading ? <Loader size="small" /> : "Update GitHub Projects"} func={handleGitSync} />
+        </HStack>
       </VStack>
 
       {/* Filters */}

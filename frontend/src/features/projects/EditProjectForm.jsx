@@ -30,26 +30,26 @@ const EditProjectForm = ({ project, isProjectSuccess }) => {
   const [updateProject, { isLoading: isUpdateLoading, isSuccess: isUpdateSuccess, isError: isUpdateError, error: updateError }] = useUpdateProjectMutation();
   const toast = useToast();
 
-  useEffect(() => {
-    if (isUpdateSuccess) {
-      toast({
-        title: "Project Updated!",
-        description: "Your project has been updated successfully.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-      navigate(-1)
-    } else if (isUpdateError) {
-      toast({
-        title: "Error!",
-        description: typeof updateError?.data?.message === "object" ? "Something went wrong" : updateError?.data?.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  }, [isUpdateSuccess, isUpdateError, toast]);
+  // useEffect(() => {
+  //   if (isUpdateSuccess) {
+  //     toast({
+  //       title: "Project Updated!",
+  //       description: "Your project has been updated successfully.",
+  //       status: "success",
+  //       duration: 5000,
+  //       isClosable: true,
+  //     });
+  //     navigate(-1)
+  //   } else if (isUpdateError) {
+  //     toast({
+  //       title: "Error!",
+  //       description: typeof updateError?.data?.message === "object" ? "Something went wrong" : updateError?.data?.message,
+  //       status: "error",
+  //       duration: 5000,
+  //       isClosable: true,
+  //     });
+  //   }
+  // }, []);
 
   // Memoized submit handler
   const handleSubmit = useCallback(
