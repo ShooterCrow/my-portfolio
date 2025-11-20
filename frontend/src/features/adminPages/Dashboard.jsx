@@ -303,10 +303,10 @@ const Dashboard = () => {
                       {DEMO_STATS.activity.todayActions}
                     </StatNumber>
                     <StatLabel color="gray.500" fontSize="sm">
-                      Today's Activity
+                      Project Ideas
                     </StatLabel>
                     <StatHelpText fontSize="xs" color="gray.600">
-                      {DEMO_STATS.activity.thisWeek} this week
+                      {DEMO_STATS.activity.thisWeek} Ongoing
                     </StatHelpText>
                   </Stat>
                 </CardBody>

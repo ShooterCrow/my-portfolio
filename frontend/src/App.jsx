@@ -25,6 +25,7 @@ import Learn from './features/learn/Learn'
 import Profile from './features/profile/Profile'
 import UsersList from './features/users/UsersList'
 import Projects from './features/adminPages/Projects'
+import ProjectDetail from './features/adminPages/ProjectDetail'
 
 // Create wrapper components that include ClaimStatusProvider
 const UserLayoutWithProvider = () => (
@@ -59,6 +60,7 @@ const App = () => {
                     <Route index element={<Dashboard />} />
                     <Route path='projects'>
                       <Route index element={<Projects />} />
+                      <Route path=':id' element={<ProjectDetail />} />
                       <Route path='editproject/:id' element={<EditProject />} />
                       <Route path='addproject' element={<AddNewProject />} />
                     </Route>

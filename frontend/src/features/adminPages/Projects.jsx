@@ -293,7 +293,9 @@ const ProjectCard = React.memo(({ project, onEdit }) => {
             </HStack>
 
             {/* View Details Button */}
-            <Button2 text={"Details"} onClick={onOpen} to={`/projects/${project._id || project.id}`} />
+            <Link to={`${project._id || project.id}`}>
+              <Button2 text={"Details"} />
+            </Link>
             {/* <Button
               as={Link}
               to={`/projects/${project._id || project.id}`}
