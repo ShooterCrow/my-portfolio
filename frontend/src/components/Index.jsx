@@ -129,7 +129,7 @@ const Index = () => {
             <Box position="relative" w="100%" h="100%">
               {/* Image */}
               <Image
-                src="/me_b.png"
+                src="/me_b1.png"
                 alt="Profile"
                 w="100%"
                 h="100%"
