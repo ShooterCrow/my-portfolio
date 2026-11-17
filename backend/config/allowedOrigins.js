@@ -5,5 +5,5 @@ exports.allowedOrigins = [
   "http://www.webdevlab.site/",
   "http://www.webdevlab.site",
   "https://my-portfolio-vert-psi-94.vercel.app",  
-  "https://my-portfolio-vert-psi-94.vercel.app"
+  "https://wwww.my-portfolio-vert-psi-94.vercel.app"
 ];
