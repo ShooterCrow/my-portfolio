@@ -133,7 +133,8 @@ const Index = () => {
                 alt="Profile"
                 w="100%"
                 h="100%"
-                objectFit={{ base: "cover", md: "contain", lg: "cover" }} // Use cover to ensure the image fills the container
+                objectFit={{ base: "cover", md: "contain", lg: "cover" }}
+                objectPosition="left bottom"
                 borderRadius="sm"
               />
 
