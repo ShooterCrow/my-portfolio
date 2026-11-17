@@ -4,6 +4,6 @@ exports.allowedOrigins = [
   "https://www.webdevlab.site",
   "http://www.webdevlab.site/",
   "http://www.webdevlab.site",
-  "http://localhost:5173",
-  "http://localhost:5174"
+  "https://my-portfolio-vert-psi-94.vercel.app",  
+  "https://my-portfolio-vert-psi-94.vercel.app"
 ];
