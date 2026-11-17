@@ -134,7 +134,7 @@ const Index = () => {
                 w="100%"
                 h="100%"
                 objectFit={{ base: "cover", md: "contain", lg: "cover" }}
-                objectPosition="left center"
+                objectPosition="left bottom"
                 borderRadius="sm"
               />
 
