@@ -51,9 +51,13 @@ app.all("*", (req, res) => {
 
 app.use(errorHandler);
 
+mongoose.connection.on("error", (err) => {
+  console.error("❌ MongoDB Connection Error:", err);
+});
+
 mongoose.connection.once("open", () => {
   console.log("Connected to Database ✅");
-  app.listen(PORT, () => {
+  app.listen(PORT, "0.0.0.0", () => {
     console.log("🙂‍↕️ Listening on PORT", PORT);
   });
 });
